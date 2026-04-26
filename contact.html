@@ -5,74 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CreationWeb — Contact</title>
   <meta name="description" content="Page contact et brief projet pour sites web, logos et conception sur mesure." />
+
   <link rel="icon" type="image/png" href="./creationweb-logo.png?v=5" />
   <link rel="shortcut icon" href="./creationweb-logo.png?v=5" />
   <link rel="apple-touch-icon" href="./creationweb-logo.png?v=5" />
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --color-heading: #f8fcf0;
       --color-accent: rgba(230, 245, 120, 0.95);
       --color-body: rgba(215, 230, 190, 0.72);
       --color-label: rgba(210, 230, 160, 0.82);
-      --panel: rgba(10, 18, 10, 0.56);
-      --panel-strong: rgba(13, 21, 13, 0.74);
-      --line: rgba(140, 180, 120, 0.12);
-      --line-strong: rgba(180, 210, 140, 0.26);
-      --shadow: 0 18px 60px rgba(0,0,0,0.42);
+      --panel: rgba(10, 18, 10, 0.58);
+      --panel-strong: rgba(13, 21, 13, 0.78);
+      --line: rgba(140, 180, 120, 0.14);
+      --line-strong: rgba(180, 210, 140, 0.28);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100%;
       background: #000;
       overflow-x: hidden;
       font-family: 'Inter', system-ui, sans-serif;
       color: #e8ece4;
-      scroll-snap-type: y proximity;
       scroll-behavior: smooth;
     }
 
-    body.menu-open { overflow: hidden; }
+    body.menu-open {
+      overflow: hidden;
+    }
 
-    canvas {
+    body::before {
+      content: '';
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      inset: 0;
       z-index: 0;
-    }
-
-    #scroll-container {
-      position: relative;
-      z-index: 1;
       pointer-events: none;
-      will-change: transform;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(230, 245, 120, 0.16), transparent 26%),
+        radial-gradient(circle at 18% 48%, rgba(74, 122, 20, 0.18), transparent 30%),
+        radial-gradient(circle at 78% 62%, rgba(145, 176, 255, 0.10), transparent 30%),
+        linear-gradient(180deg, #000 0%, #030603 38%, #000 100%);
     }
 
-    .section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 88px 40px;
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
       pointer-events: none;
-      scroll-snap-align: start;
+      opacity: 0.44;
+      background-image:
+        linear-gradient(rgba(230, 245, 120, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230, 245, 120, 0.035) 1px, transparent 1px);
+      background-size: 74px 74px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
     }
-
-    .section * { pointer-events: auto; }
 
     .progress-bar {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       height: 2px;
-      background: rgba(230, 245, 120, 0.72);
-      z-index: 220;
       width: 0;
-      transition: width 0.1s linear;
+      z-index: 220;
+      background: rgba(230, 245, 120, 0.72);
       box-shadow: 0 0 18px rgba(230, 245, 120, 0.32);
     }
 
@@ -81,17 +89,13 @@
       top: 24px;
       left: 0;
       right: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 40px;
       z-index: 120;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
       pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.6s;
     }
-
-    .nav-float.visible { opacity: 1; }
 
     .nav-brand {
       display: inline-flex;
@@ -99,10 +103,10 @@
       gap: 12px;
       padding: 8px 12px 8px 8px;
       border-radius: 18px;
-      background: rgba(12, 18, 12, 0.42);
+      background: rgba(12, 18, 12, 0.52);
       border: 1px solid rgba(140, 180, 120, 0.16);
       backdrop-filter: blur(16px);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.36);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.36);
       pointer-events: auto;
       text-decoration: none;
     }
@@ -116,18 +120,10 @@
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,0.88), rgba(210, 196, 130, 0.56) 32%, rgba(24,24,24,0.34) 72%, rgba(0,0,0,0.08) 100%);
-      box-shadow: inset 0 0 18px rgba(255,255,255,0.25), 0 8px 24px rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.1);
+        radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.88), rgba(210, 196, 130, 0.56) 32%, rgba(24, 24, 24, 0.34) 72%, rgba(0, 0, 0, 0.08) 100%);
+      box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       flex-shrink: 0;
-    }
-
-    .nav-brand-icon::before {
-      content: '';
-      position: absolute;
-      inset: -60%;
-      background: radial-gradient(circle, rgba(230, 245, 120, 0.18), transparent 56%);
-      filter: blur(16px);
     }
 
     .nav-brand-icon img {
@@ -142,15 +138,13 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
-      min-width: 0;
     }
 
     .nav-brand-text strong {
       font-family: 'Playfair Display', serif;
       font-size: 17px;
-      color: var(--color-heading);
       line-height: 1;
-      letter-spacing: 0.2px;
+      color: var(--color-heading);
     }
 
     .nav-brand-text span {
@@ -163,14 +157,21 @@
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 28px;
       pointer-events: auto;
-      align-items: center;
       padding: 14px 18px;
       border-radius: 20px;
-      background: rgba(9, 14, 9, 0.34);
+      background: rgba(9, 14, 9, 0.42);
       border: 1px solid rgba(140, 180, 120, 0.1);
       backdrop-filter: blur(12px);
+    }
+
+    .nav-links a,
+    .nav-mobile-overlay a,
+    .site-footer a {
+      text-decoration: none;
+      transition: color 0.3s, transform 0.3s;
     }
 
     .nav-links a {
@@ -178,49 +179,49 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--color-body);
-      text-decoration: none;
-      transition: color 0.3s;
       font-weight: 500;
     }
 
     .nav-links a:hover,
+    .nav-links a.active,
     .nav-mobile-overlay a:hover,
-    .site-footer a:hover {
+    .nav-mobile-overlay a.active,
+    .site-footer a:hover,
+    .site-footer a.active {
       color: var(--color-accent);
     }
 
     .nav-hamburger {
       display: none;
       pointer-events: auto;
-      width: 40px;
-      height: 40px;
-      background: rgba(15, 25, 15, 0.4);
+      width: 42px;
+      height: 42px;
+      background: rgba(15, 25, 15, 0.46);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(140, 180, 120, 0.15);
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       position: relative;
       flex-shrink: 0;
-      transition: background 0.3s, border-color 0.3s;
     }
 
     .nav-hamburger span {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 16px;
+      width: 17px;
       height: 1.5px;
-      background: rgba(215, 230, 190, 0.78);
+      background: rgba(215, 230, 190, 0.82);
       border-radius: 1px;
       transition: transform 0.3s, opacity 0.3s;
     }
 
-    .nav-hamburger span:nth-child(1) { top: 11px; }
-    .nav-hamburger span:nth-child(2) { top: 18px; }
-    .nav-hamburger span:nth-child(3) { top: 25px; }
+    .nav-hamburger span:nth-child(1) { top: 12px; }
+    .nav-hamburger span:nth-child(2) { top: 20px; }
+    .nav-hamburger span:nth-child(3) { top: 28px; }
 
     .nav-hamburger.open span:nth-child(1) {
-      transform: translateX(-50%) translateY(7px) rotate(45deg);
+      transform: translateX(-50%) translateY(8px) rotate(45deg);
     }
 
     .nav-hamburger.open span:nth-child(2) {
@@ -228,27 +229,24 @@
     }
 
     .nav-hamburger.open span:nth-child(3) {
-      transform: translateX(-50%) translateY(-7px) rotate(-45deg);
+      transform: translateX(-50%) translateY(-8px) rotate(-45deg);
     }
 
     .nav-mobile-overlay {
       position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.86);
-      backdrop-filter: blur(24px);
+      inset: 0;
       z-index: 110;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 28px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(24px);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.35s ease, visibility 0.35s;
       pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s;
     }
 
     .nav-mobile-overlay.open {
@@ -261,32 +259,31 @@
       font-size: 14px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(215, 230, 190, 0.7);
-      text-decoration: none;
-      transition: color 0.3s, transform 0.3s;
+      color: rgba(215, 230, 190, 0.72);
       font-weight: 500;
-      transform: translateY(10px);
-      opacity: 0;
     }
 
-    .nav-mobile-overlay.open a {
-      opacity: 1;
-      transform: translateY(0);
+    main {
+      position: relative;
+      z-index: 1;
     }
 
-    .nav-mobile-overlay.open a:nth-child(1) { transition-delay: 0.04s; }
-    .nav-mobile-overlay.open a:nth-child(2) { transition-delay: 0.08s; }
-    .nav-mobile-overlay.open a:nth-child(3) { transition-delay: 0.12s; }
-    .nav-mobile-overlay.open a:nth-child(4) { transition-delay: 0.16s; }
-    .nav-mobile-overlay.open a:nth-child(5) { transition-delay: 0.20s; }
+    .section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 108px 40px;
+    }
 
     .hero {
-      min-height: 110vh;
+      min-height: 108vh;
       flex-direction: column;
       gap: 18px;
       text-align: center;
       justify-content: flex-start;
-      padding-top: 7vh;
+      padding-top: 14vh;
     }
 
     .hero-tag,
@@ -294,70 +291,18 @@
     .pillars-header span,
     .stats-label,
     .process-label,
-    .quote-attr,
     .cta-meta {
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--color-label);
-      text-shadow: 0 1px 12px rgba(0,0,0,0.55);
-    }
-
-    .hero-tag {
-      opacity: 0;
-      transform: translateY(30px);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
       font-weight: 500;
-    }
-
-    .hero-logo-shell {
-      position: relative;
-      width: min(240px, 42vw);
-      aspect-ratio: 1 / 1;
-      display: grid;
-      place-items: center;
-      margin-top: 10px;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        radial-gradient(circle at 50% 34%, rgba(255,255,255,0.9), rgba(205,190,128,0.62) 28%, rgba(20,20,20,0.3) 72%, rgba(0,0,0,0.05) 100%),
-        rgba(14, 18, 14, 0.34);
-      box-shadow: inset 0 0 34px rgba(255,255,255,0.2), 0 20px 80px rgba(0,0,0,0.36);
-      backdrop-filter: blur(18px);
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-    }
-
-    .hero-logo-shell::before,
-    .hero-logo-shell::after {
-      content: '';
-      position: absolute;
-      inset: -32%;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .hero-logo-shell::before {
-      background: radial-gradient(circle, rgba(230, 245, 120, 0.18), transparent 58%);
-      filter: blur(30px);
-    }
-
-    .hero-logo-shell::after {
-      background: radial-gradient(circle, rgba(145, 176, 255, 0.16), transparent 56%);
-      filter: blur(48px);
-      transform: translateY(12%);
-    }
-
-    .hero-logo-shell img {
-      position: relative;
-      z-index: 1;
-      width: 78%;
-      height: 78%;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.25));
     }
 
     .hero h1,
     .manifesto h2,
+    .pillars-header h2,
     .stats-head h2,
     .process-head h2,
     .cta-section h2 {
@@ -366,14 +311,12 @@
       line-height: 1.06;
       letter-spacing: -1px;
       color: var(--color-heading);
-      text-shadow: 0 2px 30px rgba(0,0,0,0.62), 0 0 80px rgba(0,0,0,0.4);
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.62), 0 0 80px rgba(0, 0, 0, 0.4);
     }
 
     .hero h1 {
       font-size: clamp(46px, 8vw, 104px);
-      opacity: 0;
-      transform: translateY(40px);
-      max-width: 960px;
+      max-width: 980px;
     }
 
     .hero h1 em,
@@ -400,19 +343,17 @@
     }
 
     .hero-sub {
-      opacity: 0;
-      transform: translateY(30px);
-      max-width: 620px;
+      max-width: 640px;
     }
 
-    .hero-actions {
+    .hero-actions,
+    .cta-buttons,
+    .form-actions {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       gap: 14px;
-      opacity: 0;
-      transform: translateY(20px);
     }
 
     .wind-btn,
@@ -420,7 +361,9 @@
     .ghost-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
+      min-height: 46px;
       padding: 12px 26px;
       border-radius: 999px;
       text-decoration: none;
@@ -428,21 +371,23 @@
       font-weight: 600;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      transition: all 0.4s;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s, color 0.3s;
       backdrop-filter: blur(12px);
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .wind-btn,
     .cta-btn {
       border: 1px solid rgba(180, 210, 140, 0.32);
-      background: rgba(18, 28, 18, 0.38);
+      background: rgba(18, 28, 18, 0.5);
       color: var(--color-accent);
-      box-shadow: 0 10px 34px rgba(0,0,0,0.26);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.26);
     }
 
     .ghost-btn {
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
       color: rgba(235, 243, 224, 0.84);
     }
 
@@ -454,13 +399,13 @@
 
     .wind-btn:hover,
     .cta-btn:hover {
-      background: rgba(34, 55, 34, 0.52);
+      background: rgba(34, 55, 34, 0.62);
       border-color: rgba(180, 210, 140, 0.56);
     }
 
     .ghost-btn:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.14);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .chip-row {
@@ -468,8 +413,6 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      opacity: 0;
-      transform: translateY(20px);
     }
 
     .chip {
@@ -479,11 +422,11 @@
       padding: 10px 16px;
       border-radius: 999px;
       border: 1px solid rgba(140, 180, 120, 0.14);
-      background: rgba(8, 13, 8, 0.36);
+      background: rgba(8, 13, 8, 0.44);
       color: rgba(215, 230, 190, 0.76);
       font-size: 12px;
       font-weight: 500;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.24);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.24);
     }
 
     .chip-dot {
@@ -495,16 +438,106 @@
       flex-shrink: 0;
     }
 
-    .scroll-hint {
+    .hero-bubble-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      width: min(980px, 100%);
+      margin-top: 20px;
+    }
+
+    .hero-bubble,
+    .contact-card,
+    .pillar-card,
+    .process-card,
+    .cta-panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
       position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(140, 180, 120, 0.14);
+      border-radius: 22px;
+      background: rgba(8, 13, 8, 0.46);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .hero-bubble,
+    .contact-card {
+      padding: 24px 22px;
+    }
+
+    .pillar-card,
+    .process-card,
+    .cta-panel {
+      padding: 30px 26px;
+    }
+
+    .hero-bubble::before,
+    .contact-card::before,
+    .pillar-card::before,
+    .process-card::before,
+    .cta-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(230, 245, 120, 0.06), transparent 34%, transparent 100%);
+      opacity: 0.86;
+      pointer-events: none;
+    }
+
+    .hero-bubble-kicker,
+    .pillar-num,
+    .process-num {
+      position: relative;
+      z-index: 1;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(230, 245, 120, 0.76);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .hero-bubble strong {
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 2.6vw, 32px);
+      line-height: 1.08;
+      color: var(--color-heading);
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .hero-bubble p,
+    .pillar-card p,
+    .process-card p,
+    .contact-card p,
+    .stats-note,
+    .sf-brand-desc,
+    .sf-col a,
+    .sf-copy,
+    .sf-socials a,
+    .form-note {
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(215, 230, 190, 0.68);
+      font-weight: 300;
+    }
+
+    .scroll-hint {
       margin-top: auto;
-      margin-bottom: 12vh;
+      margin-bottom: 6vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      opacity: 0;
-      transform: translateY(0);
+      text-decoration: none;
     }
 
     .scroll-hint span {
@@ -512,7 +545,6 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--color-label);
-      text-shadow: 0 1px 12px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.5);
     }
 
     .scroll-line {
@@ -528,6 +560,7 @@
     }
 
     .manifesto,
+    .pillars,
     .stats-section,
     .process-section,
     .cta-section {
@@ -536,19 +569,13 @@
       text-align: center;
     }
 
-    .manifesto h2 {
-      font-size: clamp(28px, 4vw, 56px);
-      max-width: 920px;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .manifesto-label,
-    .stats-label,
-    .process-label,
-    .cta-meta {
-      opacity: 0;
-      transform: translateY(20px);
+    .manifesto h2,
+    .pillars-header h2,
+    .stats-head h2,
+    .process-head h2,
+    .cta-section h2 {
+      font-size: clamp(30px, 4.8vw, 60px);
+      max-width: 900px;
     }
 
     .manifesto-copy,
@@ -556,35 +583,25 @@
     .section-copy,
     .cta-sub {
       max-width: 760px;
-      opacity: 0;
-      transform: translateY(24px);
       margin: 0 auto;
-    }
-
-    .pillars,
-    .process-section {
-      gap: 56px;
     }
 
     .pillars-header,
     .stats-head,
     .process-head {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
       display: flex;
       flex-direction: column;
-      gap: 14px;
       align-items: center;
+      gap: 14px;
+      text-align: center;
     }
 
-    .stats-head h2,
-    .process-head h2,
-    .cta-section h2 {
-      font-size: clamp(30px, 4.8vw, 60px);
-      max-width: 860px;
-      opacity: 0;
-      transform: translateY(30px);
+    .pillars-header p {
+      max-width: 720px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--color-body);
+      font-weight: 300;
     }
 
     .pillar-grid,
@@ -595,96 +612,46 @@
       gap: 24px;
     }
 
-    .pillar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .cta-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .pillar-card,
-    .process-card,
-    .cta-panel {
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 30px 26px;
-      background: var(--panel);
-      backdrop-filter: blur(16px);
-      opacity: 0;
-      transform: translateY(34px);
-      transition: border-color 0.4s, background 0.4s, transform 0.4s;
-      box-shadow: var(--shadow);
-      text-align: left;
-      position: relative;
-      overflow: hidden;
+    .pillar-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .pillar-card::before,
-    .process-card::before,
-    .cta-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(230,245,120,0.06), transparent 28%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-
-    .pillar-card:hover,
-    .process-card:hover,
-    .cta-panel:hover {
-      border-color: rgba(140, 180, 120, 0.32);
-      background: rgba(20, 35, 20, 0.48);
-      transform: translateY(-3px);
-    }
-
-    .pillar-card:hover::before,
-    .process-card:hover::before,
-    .cta-panel:hover::before {
-      opacity: 1;
-    }
-
-    .pillar-num,
-    .process-num {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: rgba(230, 245, 120, 0.72);
-      margin-bottom: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
+    .process-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .pillar-card h3,
     .process-card h3,
-    .cta-panel h3 {
+    .cta-panel h3,
+    .contact-card h3 {
+      position: relative;
+      z-index: 1;
       font-family: 'Playfair Display', serif;
       font-size: 24px;
       font-weight: 400;
       margin-bottom: 12px;
       color: var(--color-heading);
-      text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
     }
 
-    .pillar-card p,
-    .process-card p,
-    .cta-panel p,
-    .stats-note,
-    .sf-brand-desc,
-    .sf-col a,
-    .sf-copy,
-    .sf-socials a {
-      font-size: 13px;
-      line-height: 1.75;
-      color: rgba(215, 230, 190, 0.68);
-      font-weight: 300;
+    .contact-card h3 {
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
-    .pillar-list {
+    .pillar-list,
+    .info-list {
+      position: relative;
+      z-index: 1;
       margin-top: 16px;
       list-style: none;
       display: grid;
       gap: 9px;
     }
 
-    .pillar-list li {
+    .pillar-list li,
+    .info-list li {
       position: relative;
       padding-left: 18px;
       font-size: 12px;
@@ -692,7 +659,8 @@
       color: rgba(215, 230, 190, 0.64);
     }
 
-    .pillar-list li::before {
+    .pillar-list li::before,
+    .info-list li::before {
       content: '';
       width: 6px;
       height: 6px;
@@ -704,6 +672,28 @@
       top: 0.6em;
     }
 
+    .inline-link {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      padding-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .inline-link:hover {
+      color: var(--color-heading);
+      transform: translateY(-1px);
+    }
+
     .stats-grid {
       display: flex;
       gap: 46px;
@@ -713,8 +703,6 @@
     }
 
     .stat-item {
-      opacity: 0;
-      transform: translateY(30px);
       text-align: center;
       min-width: 160px;
     }
@@ -725,7 +713,7 @@
       font-weight: 400;
       color: rgba(235, 250, 130, 1);
       line-height: 1;
-      text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 40px rgba(230, 245, 120, 0.15);
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6), 0 0 40px rgba(230, 245, 120, 0.15);
     }
 
     .stat-unit {
@@ -736,41 +724,150 @@
       font-weight: 300;
     }
 
-    .process-card p strong,
-    .cta-panel p strong { color: rgba(248, 252, 240, 0.92); font-weight: 500; }
-
-    .cta-section {
-      justify-content: center;
-      padding-bottom: 110px;
-      gap: 26px;
+    .contact-shell {
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 8px;
     }
 
-    .cta-sub {
-      max-width: 620px;
-    }
-
-    .cta-buttons {
-      display: flex;
+    .contact-form {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      opacity: 0;
-      transform: translateY(20px);
+      margin-top: 18px;
     }
 
-    .footer {
-      min-height: 0;
-      padding: 0;
+    .contact-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .contact-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-field label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(210, 230, 160, 0.78);
+      font-weight: 600;
+    }
+
+    .contact-field input,
+    .contact-field select,
+    .contact-field textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(140, 180, 120, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 14px 16px;
+      color: var(--color-heading);
+      font: inherit;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      resize: vertical;
+    }
+
+    .contact-field select option {
+      background: #101810;
+      color: #f8fcf0;
+    }
+
+    .contact-field textarea {
+      min-height: 150px;
+    }
+
+    .contact-field input::placeholder,
+    .contact-field textarea::placeholder {
+      color: rgba(215, 230, 190, 0.42);
+    }
+
+    .contact-field input:focus,
+    .contact-field select:focus,
+    .contact-field textarea:focus {
+      border-color: rgba(180, 210, 140, 0.38);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+      justify-content: flex-start;
+      margin-top: 4px;
+    }
+
+    .form-note {
+      max-width: 360px;
+      text-align: left;
+      color: rgba(215, 230, 190, 0.52);
+    }
+
+    .form-status {
+      grid-column: 1 / -1;
       display: none;
+      border: 1px solid rgba(180, 210, 140, 0.18);
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: rgba(230, 245, 120, 0.06);
+      color: rgba(235, 243, 224, 0.86);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .form-status.visible {
+      display: block;
+    }
+
+    .mini-chip-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .mini-chip {
+      border: 1px solid rgba(140, 180, 120, 0.12);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.025);
+      text-align: left;
+    }
+
+    .mini-chip span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(230, 245, 120, 0.72);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .mini-chip strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--color-heading);
     }
 
     .site-footer {
       position: relative;
       z-index: 2;
       border-top: 1px solid rgba(140, 180, 120, 0.08);
-      background: #000000;
+      background: #000;
       padding: 58px 40px 40px;
-      margin-top: 0;
     }
 
     .site-footer-inner {
@@ -818,9 +915,7 @@
 
     .sf-col a {
       display: block;
-      text-decoration: none;
       margin-bottom: 10px;
-      transition: color 0.3s;
     }
 
     .sf-bottom {
@@ -849,383 +944,133 @@
     .sf-socials a {
       font-size: 11px;
       color: rgba(215, 230, 190, 0.4);
-      text-decoration: none;
       letter-spacing: 1px;
       text-transform: uppercase;
-      transition: color 0.3s;
     }
 
-    .revealed {
-      opacity: 1 !important;
-      transform: translateY(0) scale(1) !important;
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
       transition:
         opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
         transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .delay-1 { transition-delay: 0.1s !important; }
-    .delay-2 { transition-delay: 0.25s !important; }
-    .delay-3 { transition-delay: 0.4s !important; }
-    .delay-4 { transition-delay: 0.55s !important; }
+    .delay-2 { transition-delay: 0.22s !important; }
+    .delay-3 { transition-delay: 0.34s !important; }
+    .delay-4 { transition-delay: 0.46s !important; }
 
     @media (max-width: 960px) {
-      .pillar-grid { grid-template-columns: 1fr; max-width: 520px; }
-      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .cta-panels { grid-template-columns: 1fr; max-width: 720px; }
-      .site-footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .pillar-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: block; }
-      .nav-float { padding: 0 24px; }
-      .section { padding: 90px 24px; }
-      .hero { padding-top: 10vh; }
-      .hero-logo-shell { width: min(240px, 62vw); }
-      .stats-grid { gap: 28px; }
-      .process-grid { grid-template-columns: 1fr; max-width: 420px; }
-      .site-footer-inner { grid-template-columns: 1fr; }
-      .sf-bottom { flex-direction: column; align-items: flex-start; }
-    }
+      .nav-links {
+        display: none;
+      }
 
-    @media (max-width: 560px) {
-      .hero-actions,
-      .cta-buttons { flex-direction: column; width: 100%; }
-      .wind-btn,
-      .ghost-btn,
-      .cta-btn { width: min(100%, 320px); justify-content: center; }
-      .chip-row { max-width: 320px; }
-      .chip { width: 100%; justify-content: center; }
-      .nav-brand-text span { display: none; }
-      .nav-brand { padding-right: 10px; }
-      .stat-item { min-width: 130px; }
-    }
+      .nav-hamburger {
+        display: block;
+      }
 
-.nav-float { opacity: 1; }
-    .nav-float.visible { opacity: 1; }
+      .nav-float {
+        padding: 0 24px;
+      }
 
-    .nav-links a.active,
-    .nav-mobile-overlay a.active,
-    .site-footer a.active {
-      color: var(--color-accent);
-    }
+      .section {
+        padding: 98px 24px;
+      }
 
-    .pillars-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 4.2vw, 56px);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.8px;
-      color: var(--color-heading);
-      max-width: 860px;
-      text-shadow: 0 2px 30px rgba(0,0,0,0.62), 0 0 80px rgba(0,0,0,0.4);
-    }
+      .hero {
+        padding-top: 12vh;
+      }
 
-    .pillars-header h2 em {
-      font-style: italic;
-      color: var(--color-accent);
-      text-shadow: 0 0 28px rgba(230, 245, 120, 0.22), 0 0 56px rgba(230, 245, 120, 0.1);
-    }
+      .hero-bubble-grid {
+        max-width: 720px;
+      }
 
-    .pillars-header p {
-      max-width: 720px;
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--color-body);
-      font-weight: 300;
-    }
+      .process-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+      }
 
-    .hero-bubble-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      width: min(980px, 100%);
-      opacity: 0;
-      transform: translateY(24px);
-    }
+      .site-footer-inner {
+        grid-template-columns: 1fr;
+      }
 
-    .hero-bubble,
-    .pillar-card,
-    .process-card,
-    .cta-panel,
-    .contact-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .hero-bubble,
-    .contact-card {
-      border: 1px solid rgba(140, 180, 120, 0.14);
-      border-radius: 22px;
-      padding: 24px 22px;
-      background: rgba(8, 13, 8, 0.42);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 14px 44px rgba(0,0,0,0.28);
-      position: relative;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .hero-bubble::before,
-    .contact-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(230,245,120,0.05), transparent 40%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .hero-bubble-kicker {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(230, 245, 120, 0.76);
-      margin-bottom: 10px;
-      font-weight: 600;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-bubble strong {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(24px, 2.6vw, 32px);
-      line-height: 1.08;
-      color: var(--color-heading);
-      font-weight: 400;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-bubble p {
-      font-size: 13px;
-      line-height: 1.75;
-      color: rgba(215, 230, 190, 0.68);
-      font-weight: 300;
-      position: relative;
-      z-index: 1;
-    }
-
-    .inline-link {
-      margin-top: auto;
-      padding-top: 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--color-accent);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    .inline-link:hover {
-      color: var(--color-heading);
-      transform: translateY(-1px);
-    }
-
-    .contact-shell {
-      width: min(1120px, 100%);
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 24px;
-      align-items: stretch;
-      margin-top: 8px;
-    }
-
-    .contact-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      line-height: 1.1;
-      font-weight: 400;
-      color: var(--color-heading);
-      margin-bottom: 14px;
-    }
-
-    .contact-card p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: rgba(215, 230, 190, 0.72);
-      font-weight: 300;
-    }
-
-    .contact-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .contact-field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-    }
-
-    .contact-field.full {
-      grid-column: 1 / -1;
-    }
-
-    .contact-field label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(210, 230, 160, 0.78);
-      font-weight: 600;
-    }
-
-    .contact-field input,
-    .contact-field select,
-    .contact-field textarea {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid rgba(140, 180, 120, 0.16);
-      background: rgba(255,255,255,0.035);
-      padding: 14px 16px;
-      color: var(--color-heading);
-      font: inherit;
-      line-height: 1.5;
-      outline: none;
-      transition: border-color 0.3s, background 0.3s, transform 0.3s;
-      resize: vertical;
-    }
-
-    .contact-field textarea {
-      min-height: 150px;
-    }
-
-    .contact-field input::placeholder,
-    .contact-field textarea::placeholder {
-      color: rgba(215, 230, 190, 0.42);
-    }
-
-    .contact-field input:focus,
-    .contact-field select:focus,
-    .contact-field textarea:focus {
-      border-color: rgba(180, 210, 140, 0.34);
-      background: rgba(255,255,255,0.05);
-      transform: translateY(-1px);
-    }
-
-    .form-actions {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 4px;
-    }
-
-    .form-note {
-      font-size: 12px;
-      line-height: 1.7;
-      color: rgba(215, 230, 190, 0.52);
-    }
-
-    .info-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-      text-align: left;
-    }
-
-    .info-list li {
-      position: relative;
-      padding-left: 18px;
-      font-size: 13px;
-      line-height: 1.75;
-      color: rgba(215, 230, 190, 0.66);
-    }
-
-    .info-list li::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(230, 245, 120, 0.78);
-      box-shadow: 0 0 12px rgba(230, 245, 120, 0.32);
-      position: absolute;
-      left: 0;
-      top: 0.62em;
-    }
-
-    .mini-chip-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .mini-chip {
-      border: 1px solid rgba(140, 180, 120, 0.12);
-      border-radius: 18px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,0.025);
-      text-align: left;
-    }
-
-    .mini-chip span {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(230, 245, 120, 0.72);
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .mini-chip strong {
-      display: block;
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 500;
-      color: var(--color-heading);
-    }
-
-    .section-split {
-      width: min(1100px, 100%);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .section-split .pillar-card {
-      min-height: 100%;
-    }
-
-    @media (max-width: 960px) {
-      .hero-bubble-grid { grid-template-columns: 1fr 1fr; }
-      .contact-shell,
-      .section-split { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .hero-bubble-grid { max-width: 720px; }
+      .sf-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
-      .hero-bubble-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .hero-bubble-grid,
       .contact-form,
-      .mini-chip-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+      .mini-chip-grid {
+        grid-template-columns: 1fr;
+      }
 
-  <script type="importmap">
-{
-      "imports": {
-        "three": "https://unpkg.com/three@0.183.0/build/three.webgpu.js",
-        "three/webgpu": "https://unpkg.com/three@0.183.0/build/three.webgpu.js",
-        "three/tsl": "https://unpkg.com/three@0.183.0/build/three.tsl.js",
-        "three/addons/": "https://unpkg.com/three@0.183.0/examples/jsm/"
+      .hero-bubble-grid {
+        max-width: 440px;
+      }
+
+      .hero-actions,
+      .cta-buttons,
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .wind-btn,
+      .ghost-btn,
+      .cta-btn {
+        width: 100%;
+      }
+
+      .chip-row {
+        width: min(100%, 340px);
+      }
+
+      .chip {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-brand-text span {
+        display: none;
+      }
+
+      .stat-item {
+        min-width: 130px;
       }
     }
-  </script>
+  </style>
 </head>
+
 <body>
   <div class="progress-bar" id="progressBar"></div>
 
@@ -1239,21 +1084,30 @@
     </a>
 
     <div class="nav-links">
-      <a href="index.html">Accueil</a> <a href="logos.html">Logos</a> <a href="sites-web.html">Sites web</a> <a href="conception.html">Conception</a> <a href="contact.html" class="active" aria-current="page">Contact</a>
+      <a href="index.html">Accueil</a>
+      <a href="logos.html">Logos</a>
+      <a href="sites-web.html">Sites web</a>
+      <a href="conception.html">Conception</a>
+      <a href="contact.html" class="active" aria-current="page">Contact</a>
     </div>
 
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <button class="nav-hamburger" id="navHamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </nav>
 
-  <div class="nav-mobile-overlay" id="navMobileOverlay">
-    <a href="index.html">Accueil</a> <a href="logos.html">Logos</a> <a href="sites-web.html">Sites web</a> <a href="conception.html">Conception</a> <a href="contact.html" class="active" aria-current="page">Contact</a>
+  <div class="nav-mobile-overlay" id="navMobileOverlay" aria-hidden="true">
+    <a href="index.html">Accueil</a>
+    <a href="logos.html">Logos</a>
+    <a href="sites-web.html">Sites web</a>
+    <a href="conception.html">Conception</a>
+    <a href="contact.html" class="active" aria-current="page">Contact</a>
   </div>
 
-  <div id="scroll-container">
-
-    <section class="section hero" id="heroSection" data-stage="0">
+  <main>
+    <section class="section hero" id="heroSection">
       <span class="hero-tag" data-reveal>Contact · Brief projet</span>
       <h1 data-reveal data-delay="1">Parlez-nous de votre projet. On vous répond avec une direction <em>claire</em>.</h1>
       <p class="hero-sub" data-reveal data-delay="2">Site web, logo ou conception : expliquez l'objectif, le ton et le niveau d'ambition. Plus le brief est net, plus la première proposition peut viser juste.</p>
@@ -1265,30 +1119,30 @@
         <div class="chip"><span class="chip-dot"></span>Projet sur mesure</div>
       </div>
 
-
       <div class="hero-actions" data-reveal data-delay="4">
         <a href="sites-web.html" class="ghost-btn">Voir les sites web</a>
         <a href="logos.html" class="ghost-btn">Voir les logos</a>
       </div>
 
-
       <div class="hero-bubble-grid" data-reveal data-delay="4">
-
         <article class="hero-bubble">
           <span class="hero-bubble-kicker">Brief</span>
           <strong>Le contexte du projet</strong>
           <p>Ce que vous faites, pour qui, avec quelle ambition et pourquoi c'est le bon moment pour lancer le projet.</p>
         </article>
+
         <article class="hero-bubble">
           <span class="hero-bubble-kicker">Objectif</span>
           <strong>Le résultat attendu</strong>
           <p>Mieux présenter l'offre, clarifier la marque, augmenter les demandes ou poser un système plus cohérent.</p>
         </article>
+
         <article class="hero-bubble">
           <span class="hero-bubble-kicker">Délai</span>
           <strong>Le bon rythme</strong>
           <p>Même si la date n'est pas figée, un cadre temporel aide à calibrer la bonne profondeur de travail.</p>
         </article>
+
         <article class="hero-bubble">
           <span class="hero-bubble-kicker">Service</span>
           <strong>Le bon point d'entrée</strong>
@@ -1296,21 +1150,19 @@
         </article>
       </div>
 
-      <div class="scroll-hint" data-reveal data-delay="4">
+      <a class="scroll-hint" href="#formulaire" data-reveal data-delay="4" aria-label="Aller au formulaire">
         <span>Explorer</span>
         <div class="scroll-line"></div>
-      </div>
+      </a>
     </section>
 
-
-    <section class="section manifesto" id="vision" data-stage="1">
+    <section class="section manifesto" id="vision">
       <span class="manifesto-label" data-reveal>Avant de démarrer</span>
       <h2 data-reveal data-delay="1">Plus le brief est clair, plus la première proposition peut être <em>juste</em>.</h2>
       <p class="manifesto-copy" data-reveal data-delay="2">Le contact n'est pas une formalité. C'est déjà la première couche de cadrage du projet. On l'utilise pour comprendre vite, simplifier et donner une direction réaliste.</p>
     </section>
 
-
-    <section class="section pillars" id="services" data-stage="2">
+    <section class="section pillars" id="services">
       <div class="pillars-header" data-reveal>
         <span>Ce qui aide le projet</span>
         <h2>Un bon départ tient souvent à quelques informations bien choisies.</h2>
@@ -1318,39 +1170,45 @@
       </div>
 
       <div class="pillar-grid">
-
         <article class="pillar-card" data-reveal data-delay="1">
           <div class="pillar-num">01 · Besoin</div>
           <h3>Ce qu'il faut nous dire</h3>
           <p>L'activité, la cible, l'objectif principal, le niveau d'ambition visuelle et les références que vous aimez ou voulez éviter.</p>
           <ul class="pillar-list">
-            <li>Votre offre en une phrase</li><li>Le livrable visé</li><li>Le ton souhaité ou l'univers recherché</li>
+            <li>Votre offre en une phrase</li>
+            <li>Le livrable visé</li>
+            <li>Le ton souhaité ou l'univers recherché</li>
           </ul>
           <a class="inline-link" href="#formulaire">Passer au brief →</a>
         </article>
+
         <article class="pillar-card" data-reveal data-delay="2">
           <div class="pillar-num">02 · Retour</div>
           <h3>Ce qu'on vous renvoie</h3>
           <p>Une lecture plus claire du besoin, la meilleure porte d'entrée et un cap visuel ou structurel pour la suite.</p>
           <ul class="pillar-list">
-            <li>Une direction adaptée au projet</li><li>Les priorités à traiter d'abord</li><li>Une vision plus simple du chantier</li>
+            <li>Une direction adaptée au projet</li>
+            <li>Les priorités à traiter d'abord</li>
+            <li>Une vision plus simple du chantier</li>
           </ul>
           <a class="inline-link" href="#formulaire">Décrire mon projet →</a>
         </article>
+
         <article class="pillar-card" data-reveal data-delay="3">
           <div class="pillar-num">03 · Timing</div>
           <h3>Le bon moment pour démarrer</h3>
           <p>Dès que vous sentez que la marque, le site ou l'expérience manquent de clarté, le cadrage apporte déjà de la valeur.</p>
           <ul class="pillar-list">
-            <li>Refonte ou création</li><li>Lancement d'une activité</li><li>Montée en gamme de l'image</li>
+            <li>Refonte ou création</li>
+            <li>Lancement d'une activité</li>
+            <li>Montée en gamme de l'image</li>
           </ul>
           <a class="inline-link" href="index.html">Revenir à l'accueil →</a>
         </article>
       </div>
     </section>
 
-
-    <section class="section stats-section" id="reperes" data-stage="3">
+    <section class="section stats-section" id="reperes">
       <div class="stats-head">
         <span class="stats-label" data-reveal>Repères contact</span>
         <h2 data-reveal data-delay="1">On avance mieux avec un brief <em>simple</em>, précis et orienté résultat.</h2>
@@ -1358,19 +1216,21 @@
       </div>
 
       <div class="stats-grid">
-
         <div class="stat-item" data-reveal data-delay="1">
-          <div class="stat-num"><24h</div>
+          <div class="stat-num">&lt;24h</div>
           <div class="stat-unit">Réponse initiale</div>
         </div>
+
         <div class="stat-item" data-reveal data-delay="2">
           <div class="stat-num">3</div>
           <div class="stat-unit">Portes d'entrée</div>
         </div>
+
         <div class="stat-item" data-reveal data-delay="3">
           <div class="stat-num">100%</div>
           <div class="stat-unit">Projet sur mesure</div>
         </div>
+
         <div class="stat-item" data-reveal data-delay="4">
           <div class="stat-num">1</div>
           <div class="stat-unit">Cap créatif clair</div>
@@ -1378,8 +1238,7 @@
       </div>
     </section>
 
-
-    <section class="section process-section" id="process" data-stage="4">
+    <section class="section process-section" id="process">
       <div class="process-head">
         <span class="process-label" data-reveal>Après le contact</span>
         <h2 data-reveal data-delay="1">Le projet démarre avec une logique plus <em>nette</em>.</h2>
@@ -1387,22 +1246,24 @@
       </div>
 
       <div class="process-grid">
-
         <article class="process-card" data-reveal data-delay="1">
           <div class="process-num">01</div>
           <h3>Lecture du brief</h3>
           <p>On repère ce qui compte vraiment : positionnement, objectif, ton, urgence et livrables à prioriser.</p>
         </article>
+
         <article class="process-card" data-reveal data-delay="2">
           <div class="process-num">02</div>
           <h3>Direction proposée</h3>
           <p>On indique la bonne porte d'entrée : site, logo, conception ou combinaison de plusieurs briques.</p>
         </article>
+
         <article class="process-card" data-reveal data-delay="3">
           <div class="process-num">03</div>
           <h3>Validation du cap</h3>
           <p>On aligne l'ambition, la profondeur de travail et le rythme pour éviter les zones floues.</p>
         </article>
+
         <article class="process-card" data-reveal data-delay="4">
           <div class="process-num">04</div>
           <h3>Lancement</h3>
@@ -1411,41 +1272,45 @@
       </div>
     </section>
 
-
-    <section class="section cta-section" id="formulaire" data-stage="5">
+    <section class="section cta-section" id="formulaire">
       <span class="cta-meta" data-reveal>Brief projet</span>
       <h2 data-reveal data-delay="1">Décrivez votre <em>projet</em>.</h2>
-      <p class="cta-sub" data-reveal data-delay="2">Donnez le contexte, l'objectif et l'ambition. Le formulaire ci-dessous est déjà prêt pour la suite.</p>
+      <p class="cta-sub" data-reveal data-delay="2">Donnez le contexte, l'objectif et l'ambition. Le formulaire ouvrira un email prérempli vers CreationWeb.</p>
 
       <div class="contact-shell">
         <article class="contact-card" data-reveal data-delay="3">
           <h3>Le brief</h3>
           <p>Expliquez ce que vous voulez lancer ou améliorer. Quelques informations bien choisies suffisent pour orienter la meilleure direction.</p>
 
-          <form class="contact-form" id="contactForm" action="mailto:creationweb.official@gmail.com" method="post" enctype="text/plain">
+          <form id="briefForm" class="contact-form">
             <div class="contact-field">
               <label for="nom">Nom</label>
-              <input id="nom" name="nom" type="text" placeholder="Votre nom" />
+              <input id="nom" name="nom" type="text" placeholder="Votre nom" autocomplete="name" required />
+            </div>
+
+            <div class="contact-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="votre@email.com" autocomplete="email" required />
             </div>
 
             <div class="contact-field">
               <label for="entreprise">Entreprise</label>
-              <input id="entreprise" name="entreprise" type="text" placeholder="Nom de votre activité" />
+              <input id="entreprise" name="entreprise" type="text" placeholder="Nom de votre activité" autocomplete="organization" />
             </div>
 
             <div class="contact-field">
               <label for="service">Service</label>
-              <select id="service" name="service">
-                <option>Sites web</option>
-                <option>Création de logos</option>
-                <option>Conception</option>
-                <option>Pack complet</option>
+              <select id="service" name="service" required>
+                <option value="Sites web">Sites web</option>
+                <option value="Création de logos">Création de logos</option>
+                <option value="Conception">Conception</option>
+                <option value="Pack complet">Pack complet</option>
               </select>
             </div>
 
-            <div class="contact-field">
+            <div class="contact-field full">
               <label for="delai">Délai</label>
-              <input id="delai" name="delai" type="text" placeholder="Ex: d'ici 3 semaines" />
+              <input id="delai" name="delai" type="text" placeholder="Ex : d'ici 3 semaines" />
             </div>
 
             <div class="contact-field full">
@@ -1455,12 +1320,14 @@
 
             <div class="contact-field full">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Contexte, références, ton souhaité, pages ou livrables attendus..."></textarea>
+              <textarea id="message" name="message" placeholder="Contexte, références, ton souhaité, pages ou livrables attendus..." required></textarea>
             </div>
+
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
 
             <div class="form-actions">
               <button type="submit" class="cta-btn">Envoyer le brief</button>
-              <span class="form-note">Le brief s'ouvrira dans votre application mail et sera adressé à creationweb.official@gmail.com.</span>
+              <span class="form-note">Le bouton ouvre votre application mail avec le brief déjà rempli.</span>
             </div>
           </form>
         </article>
@@ -1468,38 +1335,41 @@
         <article class="contact-card" data-reveal data-delay="4">
           <h3>Ce qu'on prépare ensuite</h3>
           <p>À partir de votre brief, on reformule le besoin, on identifie l'entrée la plus pertinente et on propose une trajectoire plus simple à suivre.</p>
+
           <ul class="info-list">
-            <li>Une lecture claire du besoin et du niveau d'ambition visuelle</li><li>La bonne porte d'entrée entre site web, logo, conception ou pack complet</li><li>Un cap plus précis pour ne pas perdre d'énergie dans les mauvaises directions</li><li>Une base de discussion propre pour passer rapidement à la suite</li>
+            <li>Une lecture claire du besoin et du niveau d'ambition visuelle</li>
+            <li>La bonne porte d'entrée entre site web, logo, conception ou pack complet</li>
+            <li>Un cap plus précis pour ne pas perdre d'énergie dans les mauvaises directions</li>
+            <li>Une base de discussion propre pour passer rapidement à la suite</li>
           </ul>
 
           <div class="mini-chip-grid">
+            <div class="mini-chip">
+              <span>Focus</span>
+              <strong>Objectif + ton + priorité</strong>
+            </div>
 
-          <div class="mini-chip">
-            <span>Focus</span>
-            <strong>Objectif + ton + priorité</strong>
-          </div>
-          <div class="mini-chip">
-            <span>Format</span>
-            <strong>Site, logo, conception ou pack</strong>
-          </div>
-          <div class="mini-chip">
-            <span>Rythme</span>
-            <strong>Calendrier et intensité du projet</strong>
-          </div>
-          <div class="mini-chip">
-            <span>Suite</span>
-            <strong>Cap créatif puis production</strong>
-          </div>
+            <div class="mini-chip">
+              <span>Format</span>
+              <strong>Site, logo, conception ou pack</strong>
+            </div>
+
+            <div class="mini-chip">
+              <span>Rythme</span>
+              <strong>Calendrier et intensité du projet</strong>
+            </div>
+
+            <div class="mini-chip">
+              <span>Suite</span>
+              <strong>Cap créatif puis production</strong>
+            </div>
           </div>
 
           <a class="inline-link" href="index.html">Revenir à l'accueil →</a>
         </article>
       </div>
     </section>
-
-    <section class="section footer" data-stage="6"></section>
-  </div>
-
+  </main>
 
   <footer class="site-footer">
     <div class="site-footer-inner">
@@ -1513,12 +1383,19 @@
 
       <div class="sf-col">
         <div class="sf-col-title">Navigation</div>
-        <a href="index.html">Accueil</a> <a href="logos.html">Logos</a> <a href="sites-web.html">Sites web</a> <a href="conception.html">Conception</a> <a href="contact.html" class="active">Contact</a>
+        <a href="index.html">Accueil</a>
+        <a href="logos.html">Logos</a>
+        <a href="sites-web.html">Sites web</a>
+        <a href="conception.html">Conception</a>
+        <a href="contact.html" class="active">Contact</a>
       </div>
 
       <div class="sf-col">
         <div class="sf-col-title">Expertises</div>
-        <a href="sites-web.html">Sites web</a> <a href="logos.html">Logos</a> <a href="conception.html">Conception</a> <a href="contact.html" class="active">Contact</a>
+        <a href="sites-web.html">Sites web</a>
+        <a href="logos.html">Logos</a>
+        <a href="conception.html">Conception</a>
+        <a href="contact.html" class="active">Contact</a>
       </div>
 
       <div class="sf-col">
@@ -1540,619 +1417,127 @@
     </div>
   </footer>
 
-
   <script>
-    (function () {
-      const form = document.getElementById('contactForm');
-      if (!form) return;
+    (() => {
+      const destinationEmail = 'bogdan.vlad.023@gmail.com';
+      const form = document.getElementById('briefForm');
+      const formStatus = document.getElementById('formStatus');
+      const progressBar = document.getElementById('progressBar');
+      const navHamburger = document.getElementById('navHamburger');
+      const navMobileOverlay = document.getElementById('navMobileOverlay');
+      const revealElements = document.querySelectorAll('[data-reveal]');
 
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
+      function setStatus(message) {
+        if (!formStatus) return;
+        formStatus.textContent = message;
+        formStatus.classList.add('visible');
+      }
 
-        const email = 'creationweb.official@gmail.com';
-        const nom = document.getElementById('nom')?.value.trim() || '-';
-        const entreprise = document.getElementById('entreprise')?.value.trim() || '-';
-        const service = document.getElementById('service')?.value.trim() || '-';
-        const delai = document.getElementById('delai')?.value.trim() || '-';
-        const objectif = document.getElementById('objectif')?.value.trim() || '-';
-        const message = document.getElementById('message')?.value.trim() || '-';
+      function clean(value) {
+        return String(value || '').trim();
+      }
 
-        const subject = encodeURIComponent(`Nouveau brief CreationWeb — ${service}`);
-        const body = encodeURIComponent([
-          'Bonjour CreationWeb,',
-          '',
-          'Voici mon brief :',
-          '',
-          `Nom : ${nom}`,
-          `Entreprise : ${entreprise}`,
-          `Service : ${service}`,
-          `Délai : ${delai}`,
-          `Objectif : ${objectif}`,
-          '',
-          'Message :',
-          message,
-          '',
-          'Envoyé depuis le formulaire de contact du site.'
-        ].join('\n'));
+      if (form) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
 
-        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-      });
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          const data = new FormData(form);
+          const nom = clean(data.get('nom'));
+          const email = clean(data.get('email'));
+          const entreprise = clean(data.get('entreprise'));
+          const service = clean(data.get('service'));
+          const delai = clean(data.get('delai'));
+          const objectif = clean(data.get('objectif'));
+          const message = clean(data.get('message'));
+
+          const subject = `Brief projet CreationWeb - ${nom}${entreprise ? ` / ${entreprise}` : ''}`;
+          const body = [
+            'Nouveau brief projet CreationWeb',
+            '',
+            `Nom : ${nom}`,
+            `Email : ${email}`,
+            `Entreprise : ${entreprise || 'Non renseignée'}`,
+            `Service : ${service}`,
+            `Délai : ${delai || 'Non renseigné'}`,
+            `Objectif : ${objectif || 'Non renseigné'}`,
+            '',
+            'Message :',
+            message,
+            '',
+            '---',
+            'Email généré depuis le formulaire CreationWeb.'
+          ].join('\n');
+
+          const mailtoUrl = `mailto:${destinationEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+          setStatus('Votre application mail va s’ouvrir avec le brief prérempli. Il vous restera à envoyer le message.');
+          window.location.href = mailtoUrl;
+        });
+      }
+
+      if (progressBar) {
+        const updateProgress = () => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+          progressBar.style.width = `${progress}%`;
+        };
+
+        updateProgress();
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+      }
+
+      if (navHamburger && navMobileOverlay) {
+        const closeMenu = () => {
+          navHamburger.classList.remove('open');
+          navHamburger.setAttribute('aria-expanded', 'false');
+          navMobileOverlay.classList.remove('open');
+          navMobileOverlay.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('menu-open');
+        };
+
+        navHamburger.addEventListener('click', () => {
+          const isOpen = navHamburger.classList.toggle('open');
+          navHamburger.setAttribute('aria-expanded', String(isOpen));
+          navMobileOverlay.classList.toggle('open', isOpen);
+          navMobileOverlay.setAttribute('aria-hidden', String(!isOpen));
+          document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        navMobileOverlay.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') closeMenu();
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const element = entry.target;
+            const delay = element.dataset.delay || '0';
+            element.classList.add('revealed', `delay-${delay}`);
+            observer.unobserve(element);
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -14% 0px'
+        });
+
+        revealElements.forEach((element) => observer.observe(element));
+      } else {
+        revealElements.forEach((element) => element.classList.add('revealed'));
+      }
     })();
-  </script>
-
-  <script type="module">
-import * as THREE from 'three/webgpu';
-    import {
-      Fn, uniform, float, vec3, instancedArray, instanceIndex, uv,
-      positionGeometry, positionWorld, sin, cos, pow, smoothstep, mix,
-      sqrt, select, hash, time, deltaTime, PI, mx_noise_float,
-      pass, mrt, output, transformedNormalView,
-    } from 'three/tsl';
-    import { dof } from 'three/addons/tsl/display/DepthOfFieldNode.js';
-
-    const BLADE_COUNT = 120000;
-    const FIELD_SIZE = 30;
-    const BACKGROUND_HEX = '#000000';
-    const GROUND_HEX = '#000000';
-    const BLADE_BASE_HEX = '#0e1e04';
-    const BLADE_TIP_HEX = '#c8b840';
-
-    const skyColors = {
-      top: new THREE.Color('#000000'),
-      midHigh: new THREE.Color('#000000'),
-      midLow: new THREE.Color('#000000'),
-      horizon: new THREE.Color('#000000'),
-    };
-
-    function buildSkyTexture() {
-      const w = 2, h = 512;
-      const canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext('2d');
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-      grad.addColorStop(0.0, '#' + skyColors.top.getHexString());
-      grad.addColorStop(0.35, '#' + skyColors.midHigh.getHexString());
-      grad.addColorStop(0.65, '#' + skyColors.midLow.getHexString());
-      grad.addColorStop(1.0, '#' + skyColors.horizon.getHexString());
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-      const tex = new THREE.CanvasTexture(canvas);
-      tex.mapping = THREE.EquirectangularReflectionMapping;
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.needsUpdate = true;
-      return tex;
-    }
-
-    const scene = new THREE.Scene();
-    scene.background = buildSkyTexture();
-    scene.fog = new THREE.FogExp2('#000000', 0.035);
-
-    const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 0.1, 100);
-    camera.position.set(0, 8, 18);
-    camera.lookAt(0, 0, 0);
-
-    const renderer = new THREE.WebGPURenderer({ antialias: true });
-    const isMobile = window.innerWidth < 768;
-    const maxDPR = window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2);
-    renderer.setPixelRatio(maxDPR);
-    renderer.setSize(innerWidth, innerHeight);
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
-    document.body.appendChild(renderer.domElement);
-    await renderer.init();
-
-    const bladeData = instancedArray(BLADE_COUNT, 'vec4');
-    const bendState = instancedArray(BLADE_COUNT, 'vec4');
-    const bladeBound = instancedArray(BLADE_COUNT, 'float');
-
-    const mouseWorld = uniform(new THREE.Vector3(99999, 0, 99999));
-    const mouseRadius = uniform(6.1);
-    const mouseStrength = uniform(4.0);
-    const outerRadius = uniform(9.4);
-    const outerStrength = uniform(1.45);
-    const camSphereWorld = uniform(new THREE.Vector3(99999, 0, 99999));
-    const camSphereRadius = uniform(15.0);
-    const camSphereStrength = uniform(5.9);
-
-    const grassDensity = uniform(1.0);
-    const windSpeed = uniform(1.3);
-    const windAmplitude = uniform(0.21);
-    const bladeWidth = uniform(4.0);
-    const bladeTipWidth = uniform(0.19);
-    const bladeHeight = uniform(1.6);
-    const bladeHeightVariation = uniform(0.5);
-    const bladeLean = uniform(1.1);
-    const noiseAmplitude = uniform(1.85);
-    const noiseFrequency = uniform(0.3);
-    const noise2Amplitude = uniform(0.2);
-    const noise2Frequency = uniform(15);
-    const bladeColorVariation = uniform(0.93);
-    const groundRadius = uniform(13.8);
-    const groundFalloff = uniform(2.4);
-    const bladeBaseColor = uniform(new THREE.Color(BLADE_BASE_HEX));
-    const bladeTipColor = uniform(new THREE.Color(BLADE_TIP_HEX));
-    const backgroundColor = uniform(new THREE.Color(BACKGROUND_HEX));
-    const groundColor = uniform(new THREE.Color(GROUND_HEX));
-    const fogStart = uniform(6.5);
-    const fogEnd = uniform(12.0);
-    const fogIntensity = uniform(1.0);
-    const fogColor = uniform(new THREE.Color('#000000'));
-    const goldenTipColor = uniform(new THREE.Color('#d4b838'));
-    const greenTipColor = uniform(new THREE.Color('#4a7a14'));
-    const midColor = uniform(new THREE.Color('#2d4e0e'));
-
-    const focusDistanceU = uniform(31.83);
-    const focalLengthU = uniform(10.0);
-    const bokehScaleU = uniform(12.5);
-    let dofEnabled = !isMobile;
-    let mouseFocusDist = 10.0;
-    let autoFocusSmoothed = 10.0;
-
-    const noise2D = Fn(([x, z]) => mx_noise_float(vec3(x, float(0), z)).mul(0.5).add(0.5));
-
-    const computeInit = Fn(() => {
-      const blade = bladeData.element(instanceIndex);
-      const col = instanceIndex.mod(283);
-      const row = instanceIndex.div(283);
-      const jx = hash(instanceIndex).sub(0.5);
-      const jz = hash(instanceIndex.add(7919)).sub(0.5);
-      const wx = col.toFloat().add(jx).div(float(283)).sub(0.5).mul(FIELD_SIZE);
-      const wz = row.toFloat().add(jz).div(float(283)).sub(0.5).mul(FIELD_SIZE);
-      blade.x.assign(wx);
-      blade.y.assign(wz);
-      blade.z.assign(hash(instanceIndex.add(1337)).mul(PI.mul(2)));
-      const n1 = noise2D(wx.mul(noiseFrequency), wz.mul(noiseFrequency));
-      const n2 = noise2D(wx.mul(noiseFrequency.mul(noise2Frequency)).add(50), wz.mul(noiseFrequency.mul(noise2Frequency)).add(50));
-      const clump = n1.mul(noiseAmplitude).sub(noise2Amplitude).add(n2.mul(noise2Amplitude).mul(2)).max(0);
-      blade.w.assign(clump);
-      const dist = sqrt(wx.mul(wx).add(wz.mul(wz)));
-      const edgeNoise = noise2D(wx.mul(0.25).add(100), wz.mul(0.25).add(100));
-      const maxR = float(12.0).add(edgeNoise.sub(0.5).mul(6.0));
-      const boundary = float(1).sub(smoothstep(maxR.sub(1.5), maxR, dist));
-      bladeBound.element(instanceIndex).assign(select(boundary.lessThan(0.05), float(0), boundary));
-    })().compute(BLADE_COUNT);
-
-    const computeUpdate = Fn(() => {
-      const blade = bladeData.element(instanceIndex);
-      const bend = bendState.element(instanceIndex);
-      const bx = blade.x;
-      const bz = blade.y;
-
-      const w1 = sin(bx.mul(0.35).add(bz.mul(0.12)).add(time.mul(windSpeed)));
-      const w2 = sin(bx.mul(0.18).add(bz.mul(0.28)).add(time.mul(windSpeed.mul(0.67))).add(1.7));
-      const windX = w1.add(w2).mul(windAmplitude);
-      const windZ = w1.sub(w2).mul(windAmplitude.mul(0.55));
-
-      const lw = deltaTime.mul(4.0).saturate();
-      bend.x.assign(mix(bend.x, windX, lw));
-      bend.y.assign(mix(bend.y, windZ, lw));
-
-      const dx = bx.sub(mouseWorld.x);
-      const dz = bz.sub(mouseWorld.z);
-      const dist = sqrt(dx.mul(dx).add(dz.mul(dz))).add(0.0001);
-      const falloff = float(1).sub(dist.div(mouseRadius).saturate());
-      const influence = falloff.mul(falloff).mul(mouseStrength);
-      const pushX = dx.div(dist).mul(influence);
-      const pushZ = dz.div(dist).mul(influence);
-
-      const odx = bx.sub(mouseWorld.x);
-      const odz = bz.sub(mouseWorld.z);
-      const odist = sqrt(odx.mul(odx).add(odz.mul(odz))).add(0.0001);
-      const ofalloff = float(1).sub(odist.div(outerRadius).saturate());
-      const oinfluence = ofalloff.mul(ofalloff).mul(outerStrength);
-      const opushX = odx.div(odist).mul(oinfluence);
-      const opushZ = odz.div(odist).mul(oinfluence);
-
-      const cdx = bx.sub(camSphereWorld.x);
-      const cdz = bz.sub(camSphereWorld.z);
-      const cdist = sqrt(cdx.mul(cdx).add(cdz.mul(cdz))).add(0.0001);
-      const cfalloff = float(1).sub(cdist.div(camSphereRadius).saturate());
-      const cinfluence = cfalloff.mul(cfalloff).mul(camSphereStrength);
-      const cpushX = cdx.div(cdist).mul(cinfluence);
-      const cpushZ = cdz.div(cdist).mul(cinfluence);
-
-      const totalPushX = pushX.add(opushX).add(cpushX);
-      const totalPushZ = pushZ.add(opushZ).add(cpushZ);
-
-      const targetMag = sqrt(totalPushX.mul(totalPushX).add(totalPushZ.mul(totalPushZ)));
-      const currentMag = sqrt(bend.z.mul(bend.z).add(bend.w.mul(bend.w)));
-      const lm = select(targetMag.greaterThan(currentMag), deltaTime.mul(12.0), deltaTime.mul(1)).saturate();
-      bend.z.assign(mix(bend.z, totalPushX, lm));
-      bend.w.assign(mix(bend.w, totalPushZ, lm));
-    })().compute(BLADE_COUNT);
-
-    function createBladeGeometry() {
-      const segs = 5, W = 0.055, H = 1.0;
-      const verts = [], norms = [], uvArr = [], idx = [];
-      for (let i = 0; i <= segs; i++) {
-        const t = i / segs, y = t * H, hw = W * 0.5 * (1.0 - t * 0.82);
-        verts.push(-hw, y, 0, hw, y, 0);
-        norms.push(0, 0, 1, 0, 0, 1);
-        uvArr.push(0, t, 1, t);
-      }
-      for (let i = 0; i < segs; i++) {
-        const b = i * 2;
-        idx.push(b, b + 1, b + 2, b + 1, b + 3, b + 2);
-      }
-      const geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-      geo.setAttribute('normal', new THREE.Float32BufferAttribute(norms, 3));
-      geo.setAttribute('uv', new THREE.Float32BufferAttribute(uvArr, 2));
-      geo.setIndex(idx);
-      return geo;
-    }
-
-    const grassMat = new THREE.MeshBasicNodeMaterial({ side: THREE.DoubleSide, fog: true });
-
-    grassMat.positionNode = Fn(() => {
-      const blade = bladeData.element(instanceIndex);
-      const bend = bendState.element(instanceIndex);
-      const worldX = blade.x, worldZ = blade.y, rotY = blade.z;
-      const boundary = bladeBound.element(instanceIndex);
-      const visible = select(hash(instanceIndex.add(9999)).lessThan(grassDensity.mul(0.5)), float(1), float(0));
-      const hVar = hash(instanceIndex.add(5555)).mul(bladeHeightVariation);
-      const heightScale = float(0.35).add(blade.w).add(hVar).mul(boundary).mul(visible);
-      const taper = float(1).sub(uv().y.mul(float(1).sub(bladeTipWidth)));
-      const lx = positionGeometry.x.mul(bladeWidth).mul(taper).mul(heightScale.sign());
-      const ly = positionGeometry.y.mul(heightScale).mul(bladeHeight);
-      const cY = cos(rotY), sY = sin(rotY);
-      const rx = lx.mul(cY), rz = lx.mul(sY);
-      const t = uv().y;
-      const bendFactor = pow(t, 1.8);
-      const staticBendX = hash(instanceIndex.add(7777)).sub(0.5).mul(bladeLean);
-      const staticBendZ = hash(instanceIndex.add(8888)).sub(0.5).mul(bladeLean);
-      const bendX = staticBendX.add(bend.x).add(bend.z);
-      const bendZ = staticBendZ.add(bend.y).add(bend.w);
-      const relX = rx.add(bendX.mul(bendFactor).mul(bladeHeight));
-      const relY = ly;
-      const relZ = rz.add(bendZ.mul(bendFactor).mul(bladeHeight));
-      const origLen = sqrt(rx.mul(rx).add(ly.mul(ly)).add(rz.mul(rz)));
-      const newLen = sqrt(relX.mul(relX).add(relY.mul(relY)).add(relZ.mul(relZ)));
-      const scale = origLen.div(newLen.max(0.0001));
-      return vec3(worldX.add(relX.mul(scale)), relY.mul(scale), worldZ.add(relZ.mul(scale)));
-    })();
-
-    grassMat.colorNode = Fn(() => {
-      const t = uv().y;
-      const clump = bladeData.element(instanceIndex).w.saturate();
-      const bladeHash = hash(instanceIndex.add(4242));
-      const isGolden = bladeHash.lessThan(0.4);
-      const lowerGrad = smoothstep(float(0.0), float(0.45), t);
-      const upperGrad = smoothstep(float(0.4), float(0.85), t);
-      const tipMix = float(1).sub(bladeColorVariation).add(clump.mul(bladeColorVariation));
-      const greenTip = mix(greenTipColor, bladeTipColor, tipMix);
-      const warmTip = mix(greenTipColor, goldenTipColor, tipMix);
-      const tipFinal = mix(greenTip, warmTip, select(isGolden, float(1), float(0)));
-      const lowerColor = mix(bladeBaseColor, midColor, lowerGrad);
-      const grassColor = mix(lowerColor, tipFinal, upperGrad);
-      const blade = bladeData.element(instanceIndex);
-      const dist = sqrt(blade.x.mul(blade.x).add(blade.y.mul(blade.y)));
-      const fogFactor = smoothstep(fogStart, fogEnd, dist).mul(fogIntensity);
-      return mix(grassColor, fogColor, fogFactor);
-    })();
-
-    grassMat.opacityNode = Fn(() => {
-      const blade = bladeData.element(instanceIndex);
-      const dist = sqrt(blade.x.mul(blade.x).add(blade.y.mul(blade.y)));
-      const fadeEnd = select(fogIntensity.greaterThan(0.01), fogEnd.add(2.0), float(15.0));
-      const fadeFactor = float(1).sub(smoothstep(fadeEnd.sub(5.0), fadeEnd, dist));
-      return smoothstep(float(0.0), float(0.1), uv().y).mul(fadeFactor);
-    })();
-    grassMat.transparent = true;
-
-    const bladeGeo = createBladeGeometry();
-    const grass = new THREE.InstancedMesh(bladeGeo, grassMat, BLADE_COUNT);
-    grass.frustumCulled = false;
-    scene.add(grass);
-    const dummy = new THREE.Object3D();
-    for (let i = 0; i < BLADE_COUNT; i++) grass.setMatrixAt(i, dummy.matrix);
-    grass.instanceMatrix.needsUpdate = true;
-
-    const groundMat = new THREE.MeshBasicNodeMaterial();
-    groundMat.colorNode = Fn(() => {
-      const wx = positionWorld.x, wz = positionWorld.z;
-      const dist = sqrt(wx.mul(wx).add(wz.mul(wz)));
-      const edgeNoise = noise2D(wx.mul(0.25).add(100), wz.mul(0.25).add(100));
-      const maxR = groundRadius.add(edgeNoise.sub(0.5).mul(4.0));
-      const t = smoothstep(maxR.sub(groundFalloff), maxR, dist);
-      return mix(groundColor, backgroundColor, t);
-    })();
-
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(FIELD_SIZE * 5, FIELD_SIZE * 5), groundMat);
-    ground.rotation.x = -Math.PI / 2;
-    scene.add(ground);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    const dirLight = new THREE.DirectionalLight(0xfff4e0, 1.5);
-    dirLight.position.set(5, 10, 7);
-    scene.add(dirLight);
-
-    const postProcessing = new THREE.PostProcessing(renderer);
-    const scenePass = pass(scene, camera);
-    scenePass.setMRT(mrt({
-      output: output,
-      normal: transformedNormalView,
-    }));
-    const sceneColor = scenePass.getTextureNode('output');
-    const sceneViewZ = scenePass.getViewZNode();
-    const dofOutput = dof(sceneColor, sceneViewZ, focusDistanceU, focalLengthU, bokehScaleU);
-
-    postProcessing.outputNode = dofEnabled ? dofOutput : sceneColor;
-    postProcessing.needsUpdate = true;
-
-    function rebuildPipeline() {
-      postProcessing.outputNode = dofEnabled ? dofOutput : sceneColor;
-      postProcessing.needsUpdate = true;
-    }
-
-    const raycaster = new THREE.Raycaster();
-    const mouseNDC = new THREE.Vector2();
-    const grassPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-    const hitPoint = new THREE.Vector3();
-
-    window.addEventListener('mousemove', (e) => {
-      mouseNDC.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
-      raycaster.setFromCamera(mouseNDC, camera);
-      if (raycaster.ray.intersectPlane(grassPlane, hitPoint)) {
-        mouseWorld.value.copy(hitPoint);
-        mouseFocusDist = camera.position.distanceTo(hitPoint);
-      }
-    });
-
-    window.addEventListener('mouseleave', () => {
-      mouseWorld.value.set(99999, 0, 99999);
-    });
-
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        camera.aspect = innerWidth / innerHeight;
-        camera.updateProjectionMatrix();
-        const dpr = window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2);
-        renderer.setPixelRatio(dpr);
-        renderer.setSize(innerWidth, innerHeight);
-        syncCameraPathToDOM();
-      }, 100);
-    });
-
-    const progressBar = document.getElementById('progressBar');
-    const navFloat = document.getElementById('navFloat');
-    const navHamburger = document.getElementById('navHamburger');
-    const navMobileOverlay = document.getElementById('navMobileOverlay');
-    const body = document.body;
-    const lookTarget = new THREE.Vector3();
-    const sections = [...document.querySelectorAll('.section[data-stage]')];
-    const siteFooter = document.querySelector('.site-footer');
-    const scrollHint = document.querySelector('.scroll-hint');
-
-    const cameraPath = [
-      [0.00, -2.8, 7.2, 19.6, 0.5, 1.5, 0.4, 22.0, 1, 1, 10.0, 12.5, 5.0, 1.0, 40.0],
-      [0.18, 0.0, 2.4, 14.4, 0.0, -1.4, 0.0, 14.5, 1, 1, 8.0, 10.0, 5.0, 1.0, 30.0],
-      [0.36, 7.2, 10.4, 15.6, 0.0, 0.4, 0.8, 10.0, 1, 1, 6.0, 8.0, 5.0, 0.5, 20.0],
-      [0.54, -8.0, 6.8, 21.6, 0.0, 0.4, 0.0, 7.0, 1, 1, 5.0, 10.0, 5.0, 0.5, 15.0],
-      [0.72, -1.0, 5.4, 24.6, -1.2, 2.4, 0.0, 5.0, 1, 1, 4.0, 14.0, 6.0, 1.1, 21.5],
-      [0.90, -1.6, 2.6, 8.0, -0.4, 0.2, 0.0, 16.4, 1, 0, 20.0, 18.0, 19.0, 2.8, 12.5],
-      [1.00, 0.0, 15.0, 0.0, -5.0, 3.0, -5.0, 9.8, 1, 1, 13.8, 0.0, 17.5, 1.2, 9.0],
-    ];
-
-    function getScrollProgress() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight;
-      const winHeight = window.innerHeight;
-      const scrollable = docHeight - winHeight;
-      return scrollable > 0 ? Math.min(1, Math.max(0, scrollTop / scrollable)) : 0;
-    }
-
-    function syncCameraPathToDOM() {
-      const docHeight = document.documentElement.scrollHeight;
-      const winHeight = window.innerHeight;
-      const scrollable = docHeight - winHeight;
-      if (scrollable <= 0) return;
-      cameraPath.forEach((kf, i) => {
-        const section = document.querySelector(`.section[data-stage="${i}"]`);
-        if (section) {
-          kf[0] = Math.min(1, Math.max(0, section.offsetTop / scrollable));
-        }
-      });
-      cameraPath[cameraPath.length - 1][0] = 1.0;
-    }
-
-    function lerpCam(scrollT) {
-      const snapThreshold = 0.005;
-      for (let j = 0; j < cameraPath.length; j++) {
-        if (Math.abs(cameraPath[j][0] - scrollT) < snapThreshold) {
-          const kf = cameraPath[j];
-          return {
-            px: kf[1], py: kf[2], pz: kf[3],
-            lx: kf[4], ly: kf[5], lz: kf[6],
-            fd: kf[7], af: kf[8], dofOn: kf[9],
-            fl: kf[10], bk: kf[11], afSpd: kf[12], afMin: kf[13], afMax: kf[14],
-          };
-        }
-      }
-
-      let i = 0;
-      for (let j = 1; j < cameraPath.length; j++) {
-        if (cameraPath[j][0] >= scrollT) {
-          i = j - 1;
-          break;
-        }
-        if (j === cameraPath.length - 1) i = j - 1;
-      }
-      const a = cameraPath[i], b = cameraPath[Math.min(i + 1, cameraPath.length - 1)];
-      const range = b[0] - a[0];
-      const t = range > 0 ? Math.max(0, Math.min(1, (scrollT - a[0]) / range)) : 0;
-      const ease = t * t * (3 - 2 * t);
-
-      return {
-        px: a[1] + (b[1] - a[1]) * ease,
-        py: a[2] + (b[2] - a[2]) * ease,
-        pz: a[3] + (b[3] - a[3]) * ease,
-        lx: a[4] + (b[4] - a[4]) * ease,
-        ly: a[5] + (b[5] - a[5]) * ease,
-        lz: a[6] + (b[6] - a[6]) * ease,
-        fd: a[7] + (b[7] - a[7]) * ease,
-        af: a[8] + (b[8] - a[8]) * ease,
-        dofOn: a[9] + (b[9] - a[9]) * ease,
-        fl: a[10] + (b[10] - a[10]) * ease,
-        bk: a[11] + (b[11] - a[11]) * ease,
-        afSpd: a[12] + (b[12] - a[12]) * ease,
-        afMin: a[13] + (b[13] - a[13]) * ease,
-        afMax: a[14] + (b[14] - a[14]) * ease,
-      };
-    }
-
-    syncCameraPathToDOM();
-    window.addEventListener('load', () => {
-      setTimeout(syncCameraPathToDOM, 250);
-      setTimeout(syncCameraPathToDOM, 1000);
-    });
-
-    let currentScrollT = 0;
-    let targetScrollT = 0;
-    let scrollDirty = false;
-    window.addEventListener('scroll', () => { scrollDirty = true; }, { passive: true });
-    window.addEventListener('touchmove', () => { scrollDirty = true; }, { passive: true });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const delay = el.dataset.delay || '0';
-          el.classList.add('revealed', `delay-${delay}`);
-          revealObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -18% 0px' });
-
-    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-    setTimeout(() => {
-      if (scrollHint && !scrollHint.classList.contains('revealed')) {
-        scrollHint.classList.add('revealed', 'delay-4');
-      }
-    }, 800);
-
-    document.querySelectorAll('[data-nav]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const stageIdx = parseInt(link.dataset.nav, 10);
-        const section = document.querySelector(`.section[data-stage="${stageIdx}"]`);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    navHamburger.addEventListener('click', () => {
-      navHamburger.classList.toggle('open');
-      navMobileOverlay.classList.toggle('open');
-      body.classList.toggle('menu-open');
-    });
-
-    document.querySelectorAll('[data-nav-mobile]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const stageIdx = parseInt(link.dataset.navMobile, 10);
-        const section = document.querySelector(`.section[data-stage="${stageIdx}"]`);
-        navHamburger.classList.remove('open');
-        navMobileOverlay.classList.remove('open');
-        body.classList.remove('menu-open');
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    await renderer.computeAsync(computeInit);
-
-    renderer.domElement.style.opacity = '0';
-    renderer.domElement.style.transition = 'opacity 0.4s ease';
-    for (let i = 0; i < 3; i++) {
-      renderer.compute(computeUpdate);
-      postProcessing.render();
-      await new Promise(r => requestAnimationFrame(r));
-    }
-    renderer.domElement.style.opacity = '1';
-
-    const clock = new THREE.Clock();
-
-    function animate() {
-      const dt = Math.min(clock.getDelta(), 0.05);
-
-      if (scrollDirty) {
-        targetScrollT = getScrollProgress();
-        scrollDirty = false;
-      }
-
-      currentScrollT += (targetScrollT - currentScrollT) * Math.min(1, dt * 6);
-
-      const cam = lerpCam(currentScrollT);
-      camera.position.set(cam.px, cam.py, cam.pz);
-      lookTarget.set(cam.lx, cam.ly, cam.lz);
-      camera.lookAt(lookTarget);
-
-      if (siteFooter) {
-        const footerTop = siteFooter.getBoundingClientRect().top;
-        if (footerTop < window.innerHeight) {
-          renderer.domElement.style.transform = `translateY(-${window.innerHeight - footerTop}px)`;
-        } else {
-          renderer.domElement.style.transform = '';
-        }
-      }
-
-      progressBar.style.width = (currentScrollT * 100) + '%';
-      navFloat.classList.toggle('visible', currentScrollT > 0.08);
-
-      if (scrollHint) {
-        scrollHint.style.opacity = Math.max(0, 1 - currentScrollT * 15);
-      }
-
-      camSphereWorld.value.set(camera.position.x, 0, camera.position.z);
-      const camHeight = camera.position.y;
-      const proximityT = Math.max(0, 1 - camHeight / 10);
-      const proxCurve = proximityT * proximityT;
-      camSphereRadius.value = Math.min(15, 15.0 * (0.3 + proxCurve * 0.7));
-      camSphereStrength.value = 5.9 * (0.1 + proxCurve * 0.9);
-      windSpeed.value = 1.3;
-      windAmplitude.value = 0.21;
-
-      const shouldDof = !isMobile && cam.dofOn > 0.5;
-      if (shouldDof !== dofEnabled) {
-        dofEnabled = shouldDof;
-        rebuildPipeline();
-      }
-
-      if (dofEnabled) {
-        const autoWeight = Math.max(0, Math.min(1, cam.af));
-        const mouseOnField = mouseWorld.value.x < 9000;
-        const afSpeed = cam.afSpd || 5.0;
-        const afMin = cam.afMin || 0.5;
-        const afMax = cam.afMax || 40.0;
-
-        let rawAutoFocus;
-        if (mouseOnField) {
-          rawAutoFocus = mouseFocusDist;
-        } else {
-          rawAutoFocus = Math.max(0.5, Math.sqrt(cam.py * cam.py + cam.pz * cam.pz) * 0.9);
-        }
-
-        rawAutoFocus = Math.max(afMin, Math.min(afMax, rawAutoFocus));
-        autoFocusSmoothed += (rawAutoFocus - autoFocusSmoothed) * Math.min(1, dt * afSpeed);
-        const targetFocus = cam.fd * (1 - autoWeight) + autoFocusSmoothed * autoWeight;
-
-        focusDistanceU.value += (targetFocus - focusDistanceU.value) * Math.min(1, dt * 8);
-        focalLengthU.value += (cam.fl - focalLengthU.value) * Math.min(1, dt * 6);
-        bokehScaleU.value += (cam.bk - bokehScaleU.value) * Math.min(1, dt * 6);
-      }
-
-      renderer.compute(computeUpdate);
-      postProcessing.render();
-    }
-
-    renderer.setAnimationLoop(animate);
   </script>
 </body>
 </html>
