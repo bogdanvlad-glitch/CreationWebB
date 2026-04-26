@@ -1422,20 +1422,20 @@
           <h3>Le brief</h3>
           <p>Expliquez ce que vous voulez lancer ou améliorer. Quelques informations bien choisies suffisent pour orienter la meilleure direction.</p>
 
-          <form class="contact-form" action="javascript:void(0)">
+          <form class="contact-form" id="contactForm" action="mailto:creationweb.official@gmail.com" method="post" enctype="text/plain">
             <div class="contact-field">
               <label for="nom">Nom</label>
-              <input id="nom" type="text" placeholder="Votre nom" />
+              <input id="nom" name="nom" type="text" placeholder="Votre nom" />
             </div>
 
             <div class="contact-field">
               <label for="entreprise">Entreprise</label>
-              <input id="entreprise" type="text" placeholder="Nom de votre activité" />
+              <input id="entreprise" name="entreprise" type="text" placeholder="Nom de votre activité" />
             </div>
 
             <div class="contact-field">
               <label for="service">Service</label>
-              <select id="service">
+              <select id="service" name="service">
                 <option>Sites web</option>
                 <option>Création de logos</option>
                 <option>Conception</option>
@@ -1445,22 +1445,22 @@
 
             <div class="contact-field">
               <label for="delai">Délai</label>
-              <input id="delai" type="text" placeholder="Ex: d'ici 3 semaines" />
+              <input id="delai" name="delai" type="text" placeholder="Ex: d'ici 3 semaines" />
             </div>
 
             <div class="contact-field full">
               <label for="objectif">Objectif</label>
-              <input id="objectif" type="text" placeholder="Ce que le projet doit accomplir" />
+              <input id="objectif" name="objectif" type="text" placeholder="Ce que le projet doit accomplir" />
             </div>
 
             <div class="contact-field full">
               <label for="message">Message</label>
-              <textarea id="message" placeholder="Contexte, références, ton souhaité, pages ou livrables attendus..."></textarea>
+              <textarea id="message" name="message" placeholder="Contexte, références, ton souhaité, pages ou livrables attendus..."></textarea>
             </div>
 
             <div class="form-actions">
-              <button type="button" class="cta-btn">Envoyer le brief</button>
-              <span class="form-note">Maquette front-end prête à connecter à votre outil d'envoi préféré.</span>
+              <button type="submit" class="cta-btn">Envoyer le brief</button>
+              <span class="form-note">Le brief s'ouvrira dans votre application mail et sera adressé à creationweb.official@gmail.com.</span>
             </div>
           </form>
         </article>
@@ -1540,6 +1540,45 @@
     </div>
   </footer>
 
+
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const email = 'creationweb.official@gmail.com';
+        const nom = document.getElementById('nom')?.value.trim() || '-';
+        const entreprise = document.getElementById('entreprise')?.value.trim() || '-';
+        const service = document.getElementById('service')?.value.trim() || '-';
+        const delai = document.getElementById('delai')?.value.trim() || '-';
+        const objectif = document.getElementById('objectif')?.value.trim() || '-';
+        const message = document.getElementById('message')?.value.trim() || '-';
+
+        const subject = encodeURIComponent(`Nouveau brief CreationWeb — ${service}`);
+        const body = encodeURIComponent([
+          'Bonjour CreationWeb,',
+          '',
+          'Voici mon brief :',
+          '',
+          `Nom : ${nom}`,
+          `Entreprise : ${entreprise}`,
+          `Service : ${service}`,
+          `Délai : ${delai}`,
+          `Objectif : ${objectif}`,
+          '',
+          'Message :',
+          message,
+          '',
+          'Envoyé depuis le formulaire de contact du site.'
+        ].join('\n'));
+
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      });
+    })();
+  </script>
 
   <script type="module">
 import * as THREE from 'three/webgpu';
