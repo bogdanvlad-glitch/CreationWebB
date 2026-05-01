@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CreationWeb — Portfolio</title>
+  <meta name="description" content="Portfolio CreationWeb : découvrez plusieurs créations web, sites vitrines, concepts visuels et expériences interactives." />
+  <link rel="canonical" href="https://bogdanvlad-glitch.github.io/CreationWebB/portfolio.html" />
+
+  <meta property="og:title" content="CreationWeb — Portfolio" />
+  <meta property="og:description" content="Une sélection de créations web réalisées par CreationWeb." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bogdanvlad-glitch.github.io/CreationWebB/portfolio.html" />
+  <meta property="og:image" content="https://bogdanvlad-glitch.github.io/CreationWebB/creationweb-logo.png" />
+
+  <link rel="icon" type="image/png" href="./creationweb-logo.png?v=5" />
+  <link rel="shortcut icon" href="./creationweb-logo.png?v=5" />
+  <link rel="apple-touch-icon" href="./creationweb-logo.png?v=5" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-heading: #f8fcf0;
+      --color-accent: rgba(230, 245, 120, 0.95);
+      --color-body: rgba(215, 230, 190, 0.72);
+      --color-label: rgba(210, 230, 160, 0.82);
+      --panel: rgba(8, 13, 8, 0.46);
+      --line: rgba(140, 180, 120, 0.14);
+      --line-strong: rgba(180, 210, 140, 0.28);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #e8ece4;
+      scroll-behavior: smooth;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(230, 245, 120, 0.16), transparent 26%),
+        radial-gradient(circle at 18% 48%, rgba(74, 122, 20, 0.18), transparent 30%),
+        radial-gradient(circle at 78% 62%, rgba(145, 176, 255, 0.10), transparent 30%),
+        linear-gradient(180deg, #000 0%, #030603 38%, #000 100%);
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.44;
+      background-image:
+        linear-gradient(rgba(230, 245, 120, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(230, 245, 120, 0.035) 1px, transparent 1px);
+      background-size: 74px 74px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      z-index: 220;
+      background: rgba(230, 245, 120, 0.72);
+      box-shadow: 0 0 18px rgba(230, 245, 120, 0.32);
+    }
+
+    .nav-float {
+      position: fixed;
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      pointer-events: none;
+    }
+
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px 8px 8px;
+      border-radius: 18px;
+      background: rgba(12, 18, 12, 0.52);
+      border: 1px solid rgba(140, 180, 120, 0.16);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.36);
+      pointer-events: auto;
+      text-decoration: none;
+    }
+
+    .nav-brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.88), rgba(210, 196, 130, 0.56) 32%, rgba(24, 24, 24, 0.34) 72%, rgba(0, 0, 0, 0.08) 100%);
+      box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25), 0 8px 24px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+    }
+
+    .nav-brand-icon img {
+      width: 78%;
+      height: 78%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-brand-text strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      line-height: 1;
+      color: var(--color-heading);
+    }
+
+    .nav-brand-text span {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(215, 230, 190, 0.56);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      pointer-events: auto;
+      padding: 14px 18px;
+      border-radius: 20px;
+      background: rgba(9, 14, 9, 0.42);
+      border: 1px solid rgba(140, 180, 120, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-links a,
+    .nav-mobile-overlay a,
+    .site-footer a {
+      text-decoration: none;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-body);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active,
+    .nav-mobile-overlay a:hover,
+    .nav-mobile-overlay a.active,
+    .site-footer a:hover,
+    .site-footer a.active {
+      color: var(--color-accent);
+    }
+
+    .nav-hamburger {
+      display: none;
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      background: rgba(15, 25, 15, 0.46);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(140, 180, 120, 0.15);
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger span {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 17px;
+      height: 1.5px;
+      background: rgba(215, 230, 190, 0.82);
+      border-radius: 1px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger span:nth-child(1) { top: 12px; }
+    .nav-hamburger span:nth-child(2) { top: 20px; }
+    .nav-hamburger span:nth-child(3) { top: 28px; }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateX(-50%) translateY(8px) rotate(45deg);
+    }
+
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateX(-50%) translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-mobile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(24px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+
+    .nav-mobile-overlay.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .nav-mobile-overlay a {
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(215, 230, 190, 0.72);
+      font-weight: 500;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 108px 40px;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: 16vh;
+      padding-bottom: 44px;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .hero-tag,
+    .portfolio-label,
+    .cta-meta {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--color-label);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+      font-weight: 500;
+    }
+
+    .hero h1,
+    .portfolio-head h2,
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -1px;
+      color: var(--color-heading);
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.62), 0 0 80px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 8vw, 104px);
+      max-width: 980px;
+    }
+
+    .hero h1 em,
+    .portfolio-head h2 em,
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--color-accent);
+      text-shadow: 0 0 28px rgba(230, 245, 120, 0.22), 0 0 56px rgba(230, 245, 120, 0.1);
+    }
+
+    .hero-sub,
+    .portfolio-copy,
+    .cta-sub,
+    .sf-brand-desc {
+      font-size: clamp(14px, 1.55vw, 18px);
+      line-height: 1.75;
+      max-width: 720px;
+      color: var(--color-body);
+      font-weight: 300;
+    }
+
+    .hero-actions,
+    .cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .cta-btn,
+    .ghost-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s, color 0.3s;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .cta-btn {
+      border: 1px solid rgba(180, 210, 140, 0.32);
+      background: rgba(18, 28, 18, 0.5);
+      color: var(--color-accent);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.26);
+    }
+
+    .ghost-btn {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(235, 243, 224, 0.84);
+    }
+
+    .cta-btn:hover,
+    .ghost-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-btn:hover {
+      background: rgba(34, 55, 34, 0.62);
+      border-color: rgba(180, 210, 140, 0.56);
+    }
+
+    .ghost-btn:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .portfolio-section {
+      flex-direction: column;
+      gap: 34px;
+      text-align: center;
+      padding-top: 70px;
+    }
+
+    .portfolio-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .portfolio-head h2,
+    .cta-section h2 {
+      font-size: clamp(30px, 4.8vw, 60px);
+      max-width: 900px;
+    }
+
+    .portfolio-copy,
+    .cta-sub {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .portfolio-grid {
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .portfolio-card {
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      text-align: left;
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(230, 245, 120, 0.07), transparent 38%, transparent 100%);
+      opacity: 0.86;
+      pointer-events: none;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      background: rgba(12, 20, 12, 0.62);
+    }
+
+    .portfolio-link {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 26px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-zone {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.12), transparent 34%),
+        rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .site-logo {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      border-radius: 22px;
+      filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    .logo-fallback {
+      display: none;
+      width: 82px;
+      height: 82px;
+      border-radius: 22px;
+      place-items: center;
+      background: rgba(230, 245, 120, 0.1);
+      border: 1px solid rgba(230, 245, 120, 0.24);
+      color: var(--color-accent);
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      line-height: 1;
+      box-shadow: inset 0 0 26px rgba(230, 245, 120, 0.08), 0 14px 30px rgba(0, 0, 0, 0.34);
+    }
+
+    .portfolio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 1.14;
+      color: var(--color-heading);
+      margin-bottom: 10px;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .portfolio-card p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(215, 230, 190, 0.68);
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+
+    .open-label {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .cta-section {
+      min-height: auto;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+      padding-top: 70px;
+      padding-bottom: 96px;
+    }
+
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(140, 180, 120, 0.08);
+      background: #000;
+      padding: 58px 40px 40px;
+    }
+
+    .site-footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 38px;
+    }
+
+    .sf-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 320px;
+    }
+
+    .sf-brand-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sf-brand-top .nav-brand-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+    }
+
+    .sf-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: rgba(240, 250, 220, 0.86);
+      letter-spacing: 0.4px;
+    }
+
+    .sf-brand-desc,
+    .sf-col a,
+    .sf-copy,
+    .sf-socials a {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(215, 230, 190, 0.68);
+      font-weight: 300;
+    }
+
+    .sf-col-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(210, 230, 160, 0.45);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .sf-col a {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .sf-bottom {
+      max-width: 1120px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(140, 180, 120, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .sf-copy {
+      color: rgba(215, 230, 190, 0.28);
+      letter-spacing: 0.4px;
+    }
+
+    .sf-socials {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .sf-socials a {
+      font-size: 11px;
+      color: rgba(215, 230, 190, 0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--delay, 0) * 90ms);
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-delay="1"] { --delay: 1; }
+    [data-delay="2"] { --delay: 2; }
+    [data-delay="3"] { --delay: 3; }
+    [data-delay="4"] { --delay: 4; }
+    [data-delay="5"] { --delay: 5; }
+    [data-delay="6"] { --delay: 6; }
+    [data-delay="7"] { --delay: 7; }
+    [data-delay="8"] { --delay: 8; }
+    [data-delay="9"] { --delay: 9; }
+
+    @media (max-width: 980px) {
+      .nav-float {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: block;
+      }
+
+      .portfolio-grid,
+      .site-footer-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 14vw, 66px);
+      }
+
+      .portfolio-grid,
+      .site-footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-link {
+        padding: 22px;
+      }
+
+      .logo-zone {
+        min-height: 132px;
+      }
+
+      .site-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .sf-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <nav class="nav-float" aria-label="Navigation principale">
+    <a class="nav-brand" href="./index.html" aria-label="Retour à l'accueil CreationWeb">
+      <span class="nav-brand-icon" aria-hidden="true"><img src="./creationweb-logo.png" alt="" /></span>
+      <span class="nav-brand-text">
+        <strong>CreationWeb</strong>
+        <span>Studio de codage & design</span>
+      </span>
+    </a>
+
+    <div class="nav-links" aria-label="Liens principaux">
+      <a href="./index.html">Accueil</a>
+      <a class="active" href="./portfolio.html" aria-current="page">Portfolio</a>
+      <a href="./logos.html">Logos</a>
+      <a href="./sites-web.html">Sites web</a>
+      <a href="./conception.html">Conception</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+
+    <button class="nav-hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobileMenu" aria-hidden="true">
+    <a href="./index.html">Accueil</a>
+    <a class="active" href="./portfolio.html" aria-current="page">Portfolio</a>
+    <a href="./logos.html">Logos</a>
+    <a href="./sites-web.html">Sites web</a>
+    <a href="./conception.html">Conception</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <main>
+    <section class="section hero">
+      <span class="hero-tag" data-reveal>Portfolio CreationWeb</span>
+      <h1 data-reveal data-delay="1">Une sélection de <em>créations</em> déjà en ligne.</h1>
+      <p class="hero-sub" data-reveal data-delay="2">Retrouvez ici plusieurs exemples de sites, concepts visuels et expériences web. Chaque logo ouvre directement le projet correspondant.</p>
+      <div class="hero-actions" data-reveal data-delay="3">
+        <a class="cta-btn" href="#realisations">Voir les créations</a>
+        <a class="ghost-btn" href="./contact.html">Proposer un projet</a>
+      </div>
+    </section>
+
+    <section class="section portfolio-section" id="realisations">
+      <div class="portfolio-head">
+        <span class="portfolio-label" data-reveal>Réalisations</span>
+        <h2 data-reveal data-delay="1">Des exemples pour montrer le <em>niveau</em>, l'univers et la variété.</h2>
+        <p class="portfolio-copy" data-reveal data-delay="2">Les cartes ci-dessous utilisent uniquement le logo ou favicon du site. Cliquez sur une carte pour ouvrir la création dans un nouvel onglet.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card" data-reveal data-delay="1">
+          <a class="portfolio-link" href="https://vlad-energy-core.base44.app/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Vlad Energy Core">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://vlad-energy-core.base44.app/&amp;sz=128" alt="Logo Vlad Energy Core" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">VE</span>
+            </span>
+            <h3>Vlad Energy Core</h3>
+            <p>Concept web immersif autour d'une énergie visuelle forte, pensé comme une expérience moderne et impactante.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="2">
+          <a class="portfolio-link" href="https://pixel-spark-studio-12.lovable.app/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Pixel Spark Studio">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://pixel-spark-studio-12.lovable.app/&amp;sz=128" alt="Logo Pixel Spark Studio" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">PS</span>
+            </span>
+            <h3>Pixel Spark Studio</h3>
+            <p>Site vitrine d'agence web, avec présentation des services, appel à l'action et structure commerciale claire.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="3">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/mondobio/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir MondoBio">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/mondobio/&amp;sz=128" alt="Logo MondoBio" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">MB</span>
+            </span>
+            <h3>MondoBio</h3>
+            <p>Exemple de site orienté nature, bio et univers responsable, avec une approche simple et lisible.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="4">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio1/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Portofolio 1">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/portofolio1/&amp;sz=128" alt="Logo Portofolio 1" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">P1</span>
+            </span>
+            <h3>Portofolio 1</h3>
+            <p>Prototype de portfolio personnel, pensé pour présenter une identité, des projets et une présence digitale.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="5">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/AI-Compare-NNN-2026/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir AI Compare NNN 2026">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/AI-Compare-NNN-2026/&amp;sz=128" alt="Logo AI Compare NNN 2026" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">AI</span>
+            </span>
+            <h3>AI Compare NNN 2026</h3>
+            <p>Création autour de la comparaison d'outils IA, avec un angle technologique et une présentation orientée décision.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="6">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio2/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Portofolio 2">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/portofolio2/&amp;sz=128" alt="Logo Portofolio 2" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">P2</span>
+            </span>
+            <h3>Portofolio 2</h3>
+            <p>Variation de portfolio créatif, utile pour tester une autre direction visuelle et une autre hiérarchie de contenu.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="7">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio3/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Portofolio 3">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/portofolio3/&amp;sz=128" alt="Logo Portofolio 3" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">P3</span>
+            </span>
+            <h3>Portofolio 3</h3>
+            <p>Exploration d'une page de présentation personnelle avec une mise en page différente et une identité visuelle distincte.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="8">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio4/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Portofolio 4">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/portofolio4/&amp;sz=128" alt="Logo Portofolio 4" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">P4</span>
+            </span>
+            <h3>Portofolio 4</h3>
+            <p>Autre proposition de portfolio, conçue pour montrer la capacité à varier les ambiances et les compositions.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+
+        <article class="portfolio-card" data-reveal data-delay="9">
+          <a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio-5/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Portofolio 5">
+            <span class="logo-zone">
+              <img class="site-logo" src="https://www.google.com/s2/favicons?domain_url=https://bogdanvlad-glitch.github.io/portofolio-5/&amp;sz=128" alt="Logo Portofolio 5" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+              <span class="logo-fallback" aria-hidden="true">P5</span>
+            </span>
+            <h3>Portofolio 5</h3>
+            <p>Création portfolio supplémentaire, pensée comme une démonstration de style, de rythme et de présentation web.</p>
+            <span class="open-label">Ouvrir le site →</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <span class="cta-meta" data-reveal>Votre projet</span>
+      <h2 data-reveal data-delay="1">Envie d'ajouter une nouvelle <em>création</em> ici ?</h2>
+      <p class="cta-sub" data-reveal data-delay="2">Présentez votre idée, votre activité et le style recherché. On transforme le brief en direction claire puis en page prête à être montrée.</p>
+      <div class="cta-buttons" data-reveal data-delay="3">
+        <a class="cta-btn" href="./contact.html">Demander un projet</a>
+        <a class="ghost-btn" href="./sites-web.html">Voir les services</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="sf-brand">
+        <div class="sf-brand-top">
+          <span class="nav-brand-icon" aria-hidden="true"><img src="./creationweb-logo.png" alt="" /></span>
+          <span class="sf-brand-name">CreationWeb</span>
+        </div>
+        <p class="sf-brand-desc">Portfolio de créations web, logos et concepts digitaux — pour montrer des exemples concrets avant de lancer un nouveau projet.</p>
+      </div>
+
+      <div class="sf-col">
+        <div class="sf-col-title">Navigation</div>
+        <a href="./index.html">Accueil</a>
+        <a class="active" href="./portfolio.html" aria-current="page">Portfolio</a>
+        <a href="./logos.html">Logos</a>
+        <a href="./sites-web.html">Sites web</a>
+        <a href="./conception.html">Conception</a>
+        <a href="./contact.html">Contact</a>
+      </div>
+
+      <div class="sf-col">
+        <div class="sf-col-title">Expertises</div>
+        <a href="./sites-web.html">Sites web</a>
+        <a href="./logos.html">Logos</a>
+        <a href="./conception.html">Conception</a>
+        <a href="./contact.html">Brief projet</a>
+      </div>
+
+      <div class="sf-col">
+        <div class="sf-col-title">Studio</div>
+        <a href="./index.html">Belgique</a>
+        <a href="./contact.html">Réponse sous 24h</a>
+        <a href="./conception.html">Jeune & passionné</a>
+        <a href="./sites-web.html">Sur mesure</a>
+      </div>
+    </div>
+
+    <div class="sf-bottom">
+      <p class="sf-copy">© 2026 CreationWeb — portfolio de créations digitales.</p>
+      <div class="sf-socials" aria-label="Mots-clés du studio">
+        <a href="./sites-web.html">Code</a>
+        <a href="./conception.html">Design</a>
+        <a href="./contact.html">Launch</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.querySelector('#mobileMenu');
+    const revealElements = document.querySelectorAll('[data-reveal]');
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = `${progress}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open', isOpen);
+        document.body.classList.toggle('menu-open', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      });
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
