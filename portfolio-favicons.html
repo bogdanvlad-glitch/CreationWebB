@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CreationWeb — Portfolio</title>
+  <meta name="description" content="Portfolio CreationWeb avec favicons visibles et exemples de créations web." />
+  <link rel="icon" type="image/png" href="./creationweb-logo.png?v=5" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .portfolio-card { text-align: center; }
+    .logo-zone { min-height: 170px; }
+    .site-logo { width: 104px; height: 104px; padding: 10px; }
+    .logo-fallback { display: grid; }
+    .site-logo + .logo-fallback { display: none; }
+    .portfolio-card h3 { font-size: 28px; }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <nav class="nav-float" aria-label="Navigation principale">
+    <a class="nav-brand" href="./index.html" aria-label="Retour accueil">
+      <span class="nav-brand-icon" aria-hidden="true"><img src="./creationweb-logo.png" alt="" /></span>
+      <span class="nav-brand-text"><strong>CreationWeb</strong><span>Studio de codage & design</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html">Accueil</a>
+      <a class="active" href="./portfolio-favicons.html">Portfolio</a>
+      <a href="./logos.html">Logos</a>
+      <a href="./sites-web.html">Sites web</a>
+      <a href="./conception.html">Conception</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section hero">
+      <span class="eyebrow">Portfolio CreationWeb</span>
+      <h1>Des créations web avec <em>favicons visibles</em>.</h1>
+      <p class="hero-sub">Chaque case affiche le favicon du site quand il est disponible. Si le navigateur ne le charge pas, un badge logo reste visible.</p>
+      <div class="hero-actions"><a class="cta-btn" href="#realisations">Voir les créations</a><a class="ghost-btn" href="./contact.html">Créer un projet</a></div>
+    </section>
+
+    <section class="section portfolio-section" id="realisations">
+      <div class="portfolio-head">
+        <span class="eyebrow">Réalisations</span>
+        <h2>Une galerie centrée sur le <em>logo</em>.</h2>
+        <p class="section-copy">Titres propres : Vlad Energy Group, CreationWeb Belgique, MondoBio, Beauté Milano, AI Compare, Nova Portfolio, Studio Aurora, Elite Services et Urban Vision.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card"><a class="portfolio-link" href="https://vlad-energy-core.base44.app/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://vlad-energy-core.base44.app/favicon.ico" alt="Favicon Vlad Energy Group" onerror="this.remove()"><span class="logo-fallback">VE</span></span><h3>Vlad Energy Group</h3><p>Site conceptuel pour une marque d'énergie moderne, premium et technologique.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://pixel-spark-studio-12.lovable.app/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://pixel-spark-studio-12.lovable.app/favicon.ico" alt="Favicon CreationWeb Belgique" onerror="this.remove()"><span class="logo-fallback">CW</span></span><h3>CreationWeb Belgique</h3><p>Site vitrine d'agence web belge pour présenter des services digitaux.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/mondobio/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/mondobio/favicon.ico" alt="Favicon MondoBio" onerror="this.remove()"><span class="logo-fallback">MB</span></span><h3>MondoBio</h3><p>Site naturel et responsable autour d'un univers bio, clair et rassurant.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio1/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/portofolio1/favicon.ico" alt="Favicon Beauté Milano" onerror="this.remove()"><span class="logo-fallback">BM</span></span><h3>Beauté Milano</h3><p>Concept élégant pour une marque beauté, esthétique et premium.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/AI-Compare-NNN-2026/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/AI-Compare-NNN-2026/favicon.ico" alt="Favicon AI Compare" onerror="this.remove()"><span class="logo-fallback">AI</span></span><h3>AI Compare</h3><p>Comparateur d'outils IA pour comprendre et choisir les meilleures solutions.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio2/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/portofolio2/favicon.ico" alt="Favicon Nova Portfolio" onerror="this.remove()"><span class="logo-fallback">NP</span></span><h3>Nova Portfolio</h3><p>Portfolio personnel moderne pour présenter une identité et des projets.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio3/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/portofolio3/favicon.ico" alt="Favicon Studio Aurora" onerror="this.remove()"><span class="logo-fallback">SA</span></span><h3>Studio Aurora</h3><p>Page créative avec une direction visuelle artistique et indépendante.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio4/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/portofolio4/favicon.ico" alt="Favicon Elite Services" onerror="this.remove()"><span class="logo-fallback">ES</span></span><h3>Elite Services</h3><p>Concept professionnel pour mettre en avant une offre premium et structurée.</p><span class="open-label">Ouvrir le site →</span></a></article>
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio-5/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="https://bogdanvlad-glitch.github.io/portofolio-5/favicon.ico" alt="Favicon Urban Vision" onerror="this.remove()"><span class="logo-fallback">UV</span></span><h3>Urban Vision</h3><p>Création visuelle dynamique pour une marque moderne, urbaine ou innovante.</p><span class="open-label">Ouvrir le site →</span></a></article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    const updateProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = progress + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>
