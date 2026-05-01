@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CreationWeb — Portfolio</title>
+  <meta name="description" content="Portfolio CreationWeb avec logos visibles pour illustrer chaque création." />
+  <link rel="icon" type="image/png" href="./creationweb-logo.png?v=5" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .portfolio-card { text-align: center; }
+    .logo-zone { min-height: 180px; }
+    .site-logo {
+      width: 112px;
+      height: 112px;
+      padding: 0;
+      border-radius: 28px;
+      object-fit: contain;
+      background: transparent;
+      filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.55));
+    }
+    .portfolio-card h3 { font-size: 28px; }
+    .portfolio-grid { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <nav class="nav-float" aria-label="Navigation principale">
+    <a class="nav-brand" href="./index.html" aria-label="Retour accueil">
+      <span class="nav-brand-icon" aria-hidden="true"><img src="./creationweb-logo.png" alt="" /></span>
+      <span class="nav-brand-text"><strong>CreationWeb</strong><span>Studio de codage & design</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html">Accueil</a>
+      <a class="active" href="./portfolio-logos.html">Portfolio</a>
+      <a href="./logos.html">Logos</a>
+      <a href="./sites-web.html">Sites web</a>
+      <a href="./conception.html">Conception</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section hero">
+      <span class="eyebrow">Portfolio CreationWeb</span>
+      <h1>Des créations web illustrées par leurs <em>logos</em>.</h1>
+      <p class="hero-sub">Chaque case contient un visuel local fiable, donc il apparaît toujours. Le clic sur la case ouvre le site correspondant.</p>
+      <div class="hero-actions"><a class="cta-btn" href="#realisations">Voir les créations</a><a class="ghost-btn" href="./contact.html">Créer un projet</a></div>
+    </section>
+
+    <section class="section portfolio-section" id="realisations">
+      <div class="portfolio-head">
+        <span class="eyebrow">Réalisations</span>
+        <h2>Une galerie claire, cliquable et visuelle.</h2>
+        <p class="section-copy">Les icônes ne dépendent plus des favicons externes des sites. Elles sont intégrées directement dans cette page pour illustrer chaque création.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card"><a class="portfolio-link" href="https://vlad-energy-core.base44.app/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070b07'/%3E%3Cpath d='M67 8 30 67h25l-8 45 43-65H63z' fill='%23e6f578'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23e6f578' stroke-opacity='.32' stroke-width='3'/%3E%3C/svg%3E" alt="Logo Vlad Energy Group"></span><h3>Vlad Energy Group</h3><p>Site conceptuel pour une marque d'énergie moderne, premium et technologique.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://pixel-spark-studio-12.lovable.app/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070b07'/%3E%3Ctext x='60' y='70' text-anchor='middle' font-size='38' font-family='Arial' font-weight='700' fill='%23e6f578'%3ECW%3C/text%3E%3Ccircle cx='35' cy='34' r='7' fill='%23e6f578'/%3E%3Ccircle cx='85' cy='86' r='7' fill='%23e6f578' opacity='.55'/%3E%3C/svg%3E" alt="Logo CreationWeb Belgique"></span><h3>CreationWeb Belgique</h3><p>Site vitrine d'agence web belge pour présenter des services digitaux.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/mondobio/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070b07'/%3E%3Cpath d='M62 92C39 80 30 60 38 36c22 3 38 14 48 34-7 13-15 20-24 22z' fill='%237bd66f'/%3E%3Cpath d='M43 48c17 8 29 20 36 36' stroke='%23f8fcf0' stroke-width='5' stroke-linecap='round' fill='none' opacity='.75'/%3E%3C/svg%3E" alt="Logo MondoBio"></span><h3>MondoBio</h3><p>Site naturel et responsable autour d'un univers bio, clair et rassurant.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio1/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23120b0d'/%3E%3Cpath d='M60 28c15 16 27 25 27 41 0 14-11 24-27 24S33 83 33 69c0-16 12-25 27-41z' fill='%23f0c6d6'/%3E%3Ctext x='60' y='73' text-anchor='middle' font-size='26' font-family='Arial' font-weight='700' fill='%23120b0d'%3EBM%3C/text%3E%3C/svg%3E" alt="Logo Beauté Milano"></span><h3>Beauté Milano</h3><p>Concept élégant pour une marque beauté, esthétique et premium.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/AI-Compare-NNN-2026/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070b12'/%3E%3Ctext x='60' y='73' text-anchor='middle' font-size='42' font-family='Arial' font-weight='800' fill='%238ac8ff'%3EAI%3C/text%3E%3Cpath d='M26 34h68M26 86h68M34 26v68M86 26v68' stroke='%238ac8ff' stroke-opacity='.32' stroke-width='4'/%3E%3C/svg%3E" alt="Logo AI Compare"></span><h3>AI Compare</h3><p>Comparateur d'outils IA pour comprendre et choisir les meilleures solutions.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio2/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23070b07'/%3E%3Ccircle cx='60' cy='60' r='34' fill='none' stroke='%23e6f578' stroke-width='8'/%3E%3Cpath d='M42 72V44l36 28V44' stroke='%23f8fcf0' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" alt="Logo Nova Portfolio"></span><h3>Nova Portfolio</h3><p>Portfolio personnel moderne pour présenter une identité et des projets.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio3/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%230a0712'/%3E%3Cpath d='M60 18 72 48l32 2-25 20 8 32-27-18-27 18 8-32-25-20 32-2z' fill='%23d9b8ff'/%3E%3C/svg%3E" alt="Logo Studio Aurora"></span><h3>Studio Aurora</h3><p>Page créative avec une direction visuelle artistique et indépendante.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio4/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23080703'/%3E%3Cpath d='M60 18 92 36v30c0 22-14 36-32 44-18-8-32-22-32-44V36z' fill='%23f1c45b'/%3E%3Ctext x='60' y='72' text-anchor='middle' font-size='28' font-family='Arial' font-weight='800' fill='%23080703'%3EES%3C/text%3E%3C/svg%3E" alt="Logo Elite Services"></span><h3>Elite Services</h3><p>Concept professionnel pour mettre en avant une offre premium et structurée.</p><span class="open-label">Ouvrir le site →</span></a></article>
+
+        <article class="portfolio-card"><a class="portfolio-link" href="https://bogdanvlad-glitch.github.io/portofolio-5/" target="_blank" rel="noopener noreferrer"><span class="logo-zone"><img class="site-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23071112'/%3E%3Cpath d='M24 88 48 32l16 34 12-20 20 42z' fill='%234de3d1'/%3E%3Ccircle cx='84' cy='32' r='10' fill='%23e6f578'/%3E%3C/svg%3E" alt="Logo Urban Vision"></span><h3>Urban Vision</h3><p>Création visuelle dynamique pour une marque moderne, urbaine ou innovante.</p><span class="open-label">Ouvrir le site →</span></a></article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const progressBar = document.querySelector('.progress-bar');
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = progress + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>
